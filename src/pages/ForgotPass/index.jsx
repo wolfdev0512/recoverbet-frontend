@@ -22,10 +22,16 @@ import * as Yup from "yup";
 import { setUser } from "redux/features/userSlice";
 import { useDispatch } from "react-redux";
 
+// Router
+import { useNavigate } from "react-router-dom";
+
 //------------------------------------------------------
 const Register = () => {
   // Redux
   const dispatch = useDispatch();
+
+  // router
+  const navigate = useNavigate();
 
   // Forgot
   const [show, setShow] = useState(true);
@@ -212,7 +218,6 @@ const Register = () => {
               Faça login novamente para continuar!
             </P>
             <Button
-              type="submit"
               onClick={() => {
                 dispatch(
                   setUser({
@@ -225,6 +230,7 @@ const Register = () => {
                     pass: "123123",
                   })
                 );
+                navigate("/dash");
               }}
             >
               <P

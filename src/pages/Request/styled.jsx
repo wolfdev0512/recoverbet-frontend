@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import ImageBack from "assets/images/back.png";
+
 //------------------------------------------------
 
 export const Container = styled.div`
@@ -27,4 +29,34 @@ export const Button = styled.div`
   justify-content: center;
 
   border-radius: 14px;
+`;
+
+export const ActiveLayout = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  background: url(${ImageBack});
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ActiveButton = styled.div`
+  width: 350px;
+  height: 60px;
+
+  background: #1daf51;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 12px;
+
+  margin-top: 25px;
 `;

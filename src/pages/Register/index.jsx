@@ -24,10 +24,15 @@ import * as Yup from "yup";
 import { setUser } from "redux/features/userSlice";
 import { useDispatch } from "react-redux";
 
+// Route
+import { useNavigate } from "react-router-dom";
+
 //------------------------------------------------------
 const Register = () => {
   const [show, setShow] = useState(true);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const [formTouched, setFormTouched] = useState(false);
   const [formErrors, setFormErrors] = useState(false);
@@ -265,7 +270,6 @@ const Register = () => {
               registro da conta.
             </P>
             <Button
-              type="submit"
               onClick={() => {
                 dispatch(
                   setUser({
@@ -278,6 +282,7 @@ const Register = () => {
                     pass: "123123",
                   })
                 );
+                navigate("/dash");
               }}
             >
               <P

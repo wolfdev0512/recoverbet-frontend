@@ -81,7 +81,7 @@ export const Submit = styled.button`
   }
 `;
 
-export const Button = styled(Link)`
+export const Button = styled.div`
   margin-top: 50px;
 
   width: 500px;
