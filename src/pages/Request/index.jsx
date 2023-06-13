@@ -72,7 +72,20 @@ const Panel = () => {
       <Container>
         {active === 0 ? (
           <Flex
-            $style={{ gap: "29px", w: "100%", fDirection: "column", p: "50px" }}
+            $style={{
+              gap: "29px",
+              w: "100%",
+              fDirection: "column",
+              p: "50px",
+              queries: {
+                1024: {
+                  p: "40px",
+                },
+                768: {
+                  p: "20px",
+                },
+              },
+            }}
           >
             <P
               $style={{
@@ -80,6 +93,17 @@ const Panel = () => {
                 lH: "150%",
                 weight: "700",
                 color: "#F6BE76",
+                queries: {
+                  1440: {
+                    size: "22px",
+                  },
+                  1024: {
+                    size: "20px",
+                  },
+                  1024: {
+                    size: "16px",
+                  },
+                },
               }}
             >
               Preencha as informações solicitadas abaixo para consultar os
@@ -146,6 +170,14 @@ const Panel = () => {
                   size: "18px",
                   color: "#9B9B9B",
                   m: "0px 0px 0px 12px",
+                  queries: {
+                    1440: {
+                      size: "16px",
+                    },
+                    1024: {
+                      size: "14px",
+                    },
+                  },
                 }}
               >
                 Nós protegemos seus dados, utilizaremos essas informações apenas

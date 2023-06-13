@@ -6,9 +6,9 @@ import ImageBack from "assets/images/back.png";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: fit-content;
 
-  margin-top: 50px;
+  min-height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -17,11 +17,15 @@ export const Container = styled.div`
 
   background: linear-gradient(221.13deg, #050505 -58.95%, #181818 40.54%);
   border-radius: 14px;
+
+  @media screen and (max-width: 768px) {
+    margin: 0px 0px 150px 0px;
+  }
 `;
 
 export const Button = styled.div`
   width: 100%;
-  height: 90px;
+  height: 60px;
   background: #1daf51;
 
   display: flex;
