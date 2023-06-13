@@ -413,7 +413,7 @@ const Panel = () => {
               </Flex>
             </Flex>
             <Chart>
-              <ResponsiveContainer width="100%" height="100%">
+              <ResponsiveContainer width="100%" height={350}>
                 <AreaChart
                   width={350}
                   height={350}

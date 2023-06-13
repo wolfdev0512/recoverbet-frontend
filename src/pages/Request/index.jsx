@@ -185,7 +185,18 @@ const Panel = () => {
               </P>
             </Flex>
             <Button onClick={() => setActive(1)}>
-              <P $style={{ size: "22px", weight: "600" }}>
+              <P
+                $style={{
+                  size: "22px",
+                  weight: "600",
+                  align: "center",
+                  queries: {
+                    768: {
+                      size: "16px",
+                    },
+                  },
+                }}
+              >
                 CONSULTAR OS VALORES
               </P>
             </Button>

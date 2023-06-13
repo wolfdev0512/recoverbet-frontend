@@ -6,7 +6,12 @@ import { Container } from "./styled";
 const ProgressBar = (props) => {
   return (
     <Container>
-      <progress value={props.value} max={props.max} />
+      <div class="progress">
+        <div
+          class="progress-bar"
+          style={{ width: (props.value / props.max) * 100 + "%" }}
+        ></div>
+      </div>
     </Container>
   );
 };

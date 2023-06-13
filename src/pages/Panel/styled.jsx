@@ -40,6 +40,8 @@ export const Button = styled.button`
 export const ChartContainer = styled.div`
   width: 400px;
 
+  min-height: 400px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,6 +63,8 @@ export const Total = styled.div`
 export const Chart = styled.div`
   width: 100%;
   height: 100%;
+
+  min-height: 400px;
 
   display: flex;
   justify-content: center;
