@@ -281,6 +281,10 @@ const Register = () => {
                             $style={{
                               decoration: "underline",
                               color: "#696969",
+                              size: "14px",
+                              queries: {
+                                425: "12px",
+                              },
                             }}
                           >
                             Esqueceu a Senha?
@@ -351,6 +355,8 @@ const Register = () => {
               $style={{
                 size: "48px",
                 family: "sora",
+                weight: "300",
+                lH: "150%",
                 queries: {
                   768: {
                     size: "36px",
@@ -361,7 +367,7 @@ const Register = () => {
                 },
               }}
             >
-              Esqueceu <Span $style={{ weight: "800" }}>a senha?</Span>
+              Esqueceu <Span $style={{ weight: "600" }}>a senha?</Span>
             </P>
             <P
               $style={{
@@ -369,7 +375,7 @@ const Register = () => {
                 size: "20px",
                 m: "0px 0px 10px 0px",
                 align: "center",
-                w: "400px",
+                w: "450px",
                 queries: {
                   768: {
                     size: "18px",
@@ -382,7 +388,19 @@ const Register = () => {
               sua senha de maneira segura.
             </P>
             <CodeEmail>
-              <MailIcon disable={true} />
+              <div
+                style={{
+                  width: "56px",
+                  height: "56px",
+                  minHeight: "56px",
+                  minWidth: "56px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <MailIcon disable={true} />
+              </div>
               <Flex
                 $style={{
                   fDirection: "column",
@@ -393,7 +411,14 @@ const Register = () => {
                 <P $style={{ size: "14px", lH: "125%", color: "#696969" }}>
                   Enviar e-mail para:
                 </P>
-                <P $style={{ size: "20px", lH: "125%", color: "#F6BE76" }}>
+                <P
+                  $style={{
+                    size: "20px",
+                    lH: "125%",
+                    color: "#F6BE76",
+                    queries: { 425: { size: "16px" } },
+                  }}
+                >
                   {userEmail.charAt(0) +
                     userEmail
                       .slice(1, userEmail.indexOf("@") - 3)

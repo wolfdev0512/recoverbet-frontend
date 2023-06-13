@@ -30,7 +30,7 @@ import { useNavigate } from "react-router-dom";
 //------------------------------------------------------
 const Register = () => {
   // Next Section
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   // Redux
   const dispatch = useDispatch();
