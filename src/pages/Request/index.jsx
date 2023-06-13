@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 // Layout
-import DashLayout from "components/Layouts/DashLayout";
 import ModalLayout from "components/Layouts/ModalLayout";
 
 // component
@@ -23,11 +22,21 @@ import ImageMoney from "assets/images/money.png";
 // hook
 import useModal from "hook/useModal";
 
+const data = [
+  "Selecione a plataforma para realizar a consulta de valores perdidos:",
+  "Selecione a plataforma para realizar a consulta de valores perdidos:",
+  "Selecione a plataforma para realizar a consulta de valores perdidos:"
+]
+
 //------------------------------------------------------
 const Panel = () => {
   const [active, setActive] = useState(0);
 
   const [value, setValue] = useState(0);
+
+  const [select1, setSelect1] = useState(0);
+  const [select2, setSelect2] = useState(1);
+  const [select3, setSelect3] = useState(2);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -45,7 +54,7 @@ const Panel = () => {
   const serveModal = useModal();
 
   return (
-    <DashLayout>
+    <>
       <Container>
         {active === 0 ? (
           <Flex $style={{ gap: "29px", w: "1050px", fDirection: "column" }}>
@@ -61,16 +70,46 @@ const Panel = () => {
               valores disponíveis para saque referente as suas perdas..
             </P>
             <RequestItem
-              text="Selecione a plataforma para realizar a consulta de valores perdidos:"
-              icon={true}
+              label={data[select1]}
+              container={(onClose) => (
+                (
+                  <div>
+                    {data.map((item, key) => (
+                      <div key={key} onClick={() => {setSelect1(key); onClose();}}>
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
             />
             <RequestItem
-              text="Selecione a plataforma para realizar a consulta de valores perdidos:"
-              icon={false}
+              label={data[select2]}
+              container={(onClose) => (
+                (
+                  <div>
+                    {data.map((item, key) => (
+                      <div key={key} onClick={() => {setSelect2(key); onClose();}}>
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
             />
             <RequestItem
-              text="Selecione a plataforma para realizar a consulta de valores perdidos:"
-              icon={true}
+              label={data[select3]}
+              container={(onClose) => (
+                (
+                  <div>
+                    {data.map((item, key) => (
+                      <div key={key} onClick={() => {setSelect3(key); onClose();}}>
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
             />
             <Flex $style={{ vAlign: "center" }}>
               <SecurityIcon />
@@ -171,7 +210,7 @@ const Panel = () => {
                     m: "25px 0px 0px 0px",
                   }}
                 >
-                  Consultando informações pelo Banco de dados financeiro…. 
+                  Consultando informações pelo Banco de dados financeiro….
                 </P>
               </Flex>
             )}
@@ -181,7 +220,7 @@ const Panel = () => {
       <ModalLayout show={serveModal.isOpen} closeModal={serveModal.closeModal}>
         asdf
       </ModalLayout>
-    </DashLayout>
+    </>
   );
 };
 

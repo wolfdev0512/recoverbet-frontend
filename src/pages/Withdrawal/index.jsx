@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Layout
-import DashLayout from "components/Layouts/DashLayout";
+// import DashLayout from "components/Layouts/DashLayout";
 
 // Platform
 import Platform from "components/Platform";
@@ -31,7 +31,7 @@ const Withdrawal = () => {
   const [active, setActive] = useState(0);
 
   return (
-    <DashLayout>
+    <>
       <Platform data={true} />
       <Container>
         <Menu>
@@ -177,7 +177,7 @@ const Withdrawal = () => {
           </Flex>
         </TableContainer>
       </Container>
-    </DashLayout>
+    </>
   );
 };
 

@@ -69,7 +69,7 @@ const Panel = () => {
   const [active, setActive] = useState(false);
 
   return (
-    <DashLayout>
+    <>
       {/* <Container>
         <Platform active={active} />
         <Flex
@@ -350,7 +350,7 @@ const Panel = () => {
           </ChartContainer>
         </Flex>
       </Container> */}
-    </DashLayout>
+    </>
   );
 };
 
