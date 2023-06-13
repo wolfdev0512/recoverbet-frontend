@@ -70,7 +70,7 @@ const Panel = () => {
 
   return (
     <DashLayout>
-      <Container>
+      {/* <Container>
         <Platform active={active} />
         <Flex
           $style={{
@@ -349,7 +349,7 @@ const Panel = () => {
             </Chart>
           </ChartContainer>
         </Flex>
-      </Container>
+      </Container> */}
     </DashLayout>
   );
 };

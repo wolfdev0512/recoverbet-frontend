@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+// router
 import { useNavigate } from "react-router-dom";
 
 // layout
@@ -104,7 +105,9 @@ const Register = () => {
             <P
               $style={{
                 size: "48px",
+                weight: "300",
                 family: "sora",
+                lH: "150%",
                 queries: {
                   768: {
                     size: "36px",
@@ -115,17 +118,17 @@ const Register = () => {
                 },
               }}
             >
-              Seja <Span $style={{ weight: "800" }}>Bem-vindo!</Span>
+              Seja <Span $style={{ weight: "600" }}>Bem-vindo!</Span>
             </P>
             <P
               $style={{
-                color: "#9B9B9B",
-                size: "20px",
+                color: "#696969",
+                size: "18px",
                 m: "0px 0px 10px 0px",
                 align: "center",
                 queries: {
                   768: {
-                    size: "18px",
+                    size: "16px",
                   },
                 },
               }}
@@ -244,7 +247,13 @@ const Register = () => {
                       >
                         <Flex $style={{ vAlign: "center" }}>
                           <Toggle on={on} onClick={() => toggle(!on)} />
-                          <P $style={{ color: "#696969", size: "14px" }}>
+                          <P
+                            $style={{
+                              color: "#696969",
+                              size: "14px",
+                              queries: { 425: { size: "12px" } },
+                            }}
+                          >
                             Lembre de mim
                           </P>
                         </Flex>

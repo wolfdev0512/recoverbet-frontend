@@ -83,6 +83,10 @@ export const Toggle = styled.div`
     outline: none;
     border-radius: 50%;
   }
+
+  @media screen and (max-width: 425px) {
+    margin-right: 8px;
+  }
 `;
 
 export const Submit = styled.button`

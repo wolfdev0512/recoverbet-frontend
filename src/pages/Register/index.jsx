@@ -29,11 +29,16 @@ import { useNavigate } from "react-router-dom";
 
 //------------------------------------------------------
 const Register = () => {
-  const [show, setShow] = useState(true);
+  // Next Section
+  const [show, setShow] = useState(false);
+
+  // Redux
   const dispatch = useDispatch();
 
+  // Router
   const navigate = useNavigate();
 
+  // Error
   const [formTouched, setFormTouched] = useState(false);
   const [formErrors, setFormErrors] = useState(false);
 
@@ -53,14 +58,15 @@ const Register = () => {
             <P
               $style={{
                 size: "48px",
-                weight: "800",
+                weight: "600",
                 family: "sora",
+                lH: "150%",
                 queries: {
                   768: {
                     size: "36px",
                   },
                   425: {
-                    size: "30px",
+                    size: "28px",
                   },
                 },
               }}
@@ -224,7 +230,7 @@ const Register = () => {
               $style={{
                 family: "sora",
                 size: "42px",
-                weight: "800",
+                weight: "600",
                 lH: "125%",
                 m: "0px 0px 10px 0px",
                 queries: {
@@ -241,8 +247,9 @@ const Register = () => {
             </P>
             <P
               $style={{
+                color: "#9B9B9B",
                 size: "20px",
-                weight: "800",
+                weight: "600",
                 queries: {
                   768: {
                     size: "18px",
@@ -254,13 +261,14 @@ const Register = () => {
             </P>
             <P
               $style={{
+                color: "#9B9B9B",
                 w: "400px",
-                size: "20px",
-                weight: "500",
+                size: "18px",
+                weight: "400",
                 align: "center",
                 queries: {
                   768: {
-                    size: "18px",
+                    size: "16px",
                     w: "300px",
                   },
                 },
