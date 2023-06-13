@@ -1,7 +1,7 @@
 import React from "react";
 
 // Layout
-import { Layout, Container, CloseButton } from "./styled";
+import { Layout, ModalContainer, CloseButton, Container } from "./styled";
 
 // image
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -10,12 +10,12 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 const ModalLayout = (props) => {
   return (
     <Layout show={props.show}>
-      <Container width={props.width} height={props.height}>
+      <ModalContainer width={props.width} height={props.height}>
         <CloseButton>
           <AiOutlineCloseCircle size={24} onClick={() => props.closeModal()} />
         </CloseButton>
-        {props.children}
-      </Container>
+        <Container>{props.children}</Container>
+      </ModalContainer>
     </Layout>
   );
 };

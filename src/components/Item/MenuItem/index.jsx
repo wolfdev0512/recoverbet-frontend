@@ -9,9 +9,12 @@ import { P } from "components/Base/Text";
 
 // router
 import { useLocation } from "react-router-dom";
+import useResize from "hook/useResize";
 
 //--------------------------------------------------------
 const MenuItem = (props) => {
+  const [w] = useResize();
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
 
   const MenuIcon = props.icon;
@@ -19,17 +22,45 @@ const MenuItem = (props) => {
   const [iconColor, setIconColor] = useState("#C5C5C5");
 
   useEffect(() => {
-    if (location.pathname === props.to) {
-      setIconColor("#0B0B0B");
+    if (w <= 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
     }
-  }, [location.pathname, props.to]);
+  }, [w]);
+
+  useEffect(() => {
+    if (isMobile && props.mobile) {
+      setIconColor((prev) => "#0B0B0B");
+      return;
+    }
+    if (location.pathname === props.to) {
+      setIconColor((prev) => (!isMobile ? "#0B0B0B" : "#F6BE76"));
+    } else {
+      setIconColor((prev) => "#C5C5C5");
+    }
+  }, [location.pathname, props.to, isMobile, props.mobile]);
 
   return (
     <Layout to={props.to} active={location.pathname === props.to}>
-      <Flex $style={{ w: "22px", h: "22px", m: "0px 13px 0px 0px" }}>
+      <Flex
+        $style={{
+          vAlign: "center",
+          hAlign: "center",
+          w: "22px",
+          h: "22px",
+          m: "0px 13px 0px 0px",
+        }}
+      >
         <MenuIcon color={iconColor} />
       </Flex>
-      <P $style={{ size: "20px" }}>{props.text}</P>
+      {props.tempText === undefined || !isMobile ? (
+        <P $style={{ size: "16px", queries: { 1024: { size: "14px" } } }}>
+          {props.text}
+        </P>
+      ) : (
+        <P $style={{ size: "16px" }}>{props.tempText}</P>
+      )}
     </Layout>
   );
 };

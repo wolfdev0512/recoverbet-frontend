@@ -11,16 +11,21 @@ export const Layout = styled.div`
   width: 100vw;
   height: 100vh;
 
-  z-index: 5;
+  z-index: 1;
 
   display: ${(props) => (props.show ? "flex" : "none")};
   justify-content: center;
   align-items: center;
 
   backdrop-filter: blur(18px);
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+    background: #0c0c0c;
+  }
 `;
 
-export const Container = styled.div`
+export const ModalContainer = styled.div`
   position: relative;
 
   width: ${(props) => (props.width ? props.width : "600px")};
@@ -37,11 +42,12 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  overflow-y: scroll;
   padding: 50px 0px 50px 0px;
 
-  &::-webkit-scrollbar {
-    width: 0px;
+  @media screen and (max-width: 768px) {
+    margin-top: 50px;
+    width: 90%;
+    height: calc(100vh - 170px);
   }
 `;
 
@@ -52,4 +58,22 @@ export const CloseButton = styled.div`
   right: 20px;
 
   cursor: pointer;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+  @media screen and (max-width: 768px) {
+    height: fit-content;
+  }
 `;

@@ -1,0 +1,42 @@
+.pager {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-family: Poppins;
+
+    code {
+        min-width: 9em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        border-radius: 0.3em;
+    }
+
+}
+
+.pager > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pager button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-family: Poppins;
+}
+
+.page >div button {
+    background: #2929291A;
+}
+
+.page >div button.active {
+    background: #292929;
+}

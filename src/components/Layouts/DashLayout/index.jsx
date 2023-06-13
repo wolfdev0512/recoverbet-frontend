@@ -13,6 +13,8 @@ import {
   User,
   UserImage,
   Button,
+  Container,
+  ContentContainer,
 } from "./styled";
 
 // hooks
@@ -59,6 +61,7 @@ import { RiWhatsappFill } from "react-icons/ri";
 // validation
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import useResize from "hook/useResize";
 
 // Heading Data
 const HeadingList = [
@@ -77,10 +80,20 @@ const HeadingList = [
     heading: "Meus saques",
     detail: "Verifique seus saques",
   },
+  {
+    url: "/dash/support",
+    heading: "",
+    detail: "",
+  },
+  {
+    url: "/dash/data",
+    heading: "",
+    detail: "",
+  },
 ];
 
 //---------------------------------------------------------
-const DashLayout = ({ children }) => {
+const DashLayout = (props) => {
   // Redux
   const dispatch = useDispatch();
 
@@ -88,9 +101,20 @@ const DashLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [w] = useResize();
+  const [isMobile, setIsMobile] = useState(false);
+
   const loginUser = useSelector((state) => state.user);
 
   const [content, setContent] = useState({ heading: "", detail: "" });
+
+  useEffect(() => {
+    if (w <= 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [w]);
 
   useEffect(() => {
     setContent({
@@ -124,26 +148,42 @@ const DashLayout = ({ children }) => {
                 icon={RequestIcon}
                 text="Solicitar"
                 to={"/dash/request"}
+                mobile="#0B0B0B"
               />
-
               <MenuItem
                 icon={WithdrawalIcon}
                 text="Meus saques"
+                tempText={"Saques"}
                 to={"/dash/withdrawal"}
               />
               <div
                 onClick={() => {
+                  if (isMobile) {
+                    return;
+                  }
                   supportModal.openModal();
                 }}
               >
-                <MenuItem icon={SupportIcon} text="Suporte" />
+                <MenuItem
+                  icon={SupportIcon}
+                  text="Suporte"
+                  to={isMobile ? "/dash/support" : "#"}
+                />
               </div>
               <div
                 onClick={() => {
+                  if (isMobile) {
+                    return;
+                  }
                   userModal.openModal();
                 }}
               >
-                <MenuItem icon={DataIcon} text="Meus Dados" />
+                <MenuItem
+                  icon={DataIcon}
+                  text="Meus Dados"
+                  to={isMobile ? "/dash/data" : "#"}
+                  tempText={"Dados"}
+                />
               </div>
             </Main>
           </Menu>
@@ -170,36 +210,77 @@ const DashLayout = ({ children }) => {
         </MenuContainer>
       </Sidebar>
       <MainContainer>
-        <Header>
-          <Flex $style={{ fDirection: "column" }}>
-            <P
-              $style={{
-                color: "#F6BE76",
-                size: "40px",
-                weight: "800",
-                m: "0px 0px 10px 0px",
-              }}
-            >
-              {content.heading}
-            </P>
-            <P
-              $style={{
-                color: "#C7C7C7",
-                size: "16px",
-              }}
-            >
-              {content.detail}
-            </P>
-          </Flex>
-          <User>
-            <UserImage src={loginUser.image} alt="No userImage"></UserImage>
-            <Flex $style={{ fDirection: "column", m: "0px 0px 0px 10px" }}>
-              <P $style={{ size: "16px", weight: "600" }}>{loginUser.name}</P>
-              <P $style={{ size: "16px", weight: "400" }}>{loginUser.gmail}</P>
+        <ContentContainer>
+          <Header>
+            <Flex $style={{ fDirection: "column" }}>
+              <P
+                $style={{
+                  color: "#F6BE76",
+                  size: "40px",
+                  weight: "600",
+                  m: "0px 0px 10px 0px",
+                  queries: {
+                    1440: {
+                      size: "28px",
+                    },
+                  },
+                }}
+              >
+                {content.heading}
+              </P>
+              <P
+                $style={{
+                  color: "#C7C7C7",
+                  size: "16px",
+                  queries: {
+                    1440: {
+                      w: "280px",
+                      size: "14px",
+                    },
+                    768: {
+                      w: "100%",
+                    },
+                    425: {
+                      size: "12px",
+                    },
+                  },
+                }}
+              >
+                {content.detail}
+              </P>
             </Flex>
-          </User>
-        </Header>
-        {children}
+            {!isMobile && (
+              <User>
+                <UserImage src={loginUser.image} alt="No userImage"></UserImage>
+                <div id="text">
+                  <Flex
+                    $style={{ fDirection: "column", m: "0px 0px 0px 10px" }}
+                  >
+                    <P
+                      $style={{
+                        size: "16px",
+                        weight: "600",
+                        queries: { 1440: { size: "12px" } },
+                      }}
+                    >
+                      {loginUser.name}
+                    </P>
+                    <P
+                      $style={{
+                        size: "16px",
+                        weight: "400",
+                        queries: { 1440: { size: "12px" } },
+                      }}
+                    >
+                      {loginUser.gmail}
+                    </P>
+                  </Flex>
+                </div>
+              </User>
+            )}
+          </Header>
+          <Container>{props.children}</Container>
+        </ContentContainer>
       </MainContainer>
 
       {/* Support Modal */}
@@ -211,6 +292,7 @@ const DashLayout = ({ children }) => {
           $style={{
             w: "400px",
             h: "fit-content",
+            m: "auto",
             vAlign: "center",
             fDirection: "column",
           }}
@@ -288,7 +370,9 @@ const DashLayout = ({ children }) => {
       >
         <Flex
           $style={{
-            w: "80%",
+            w: "400px",
+            h: "fit-content",
+            m: "auto",
             fDirection: "column",
             vAlign: "center",
           }}
@@ -343,7 +427,7 @@ const DashLayout = ({ children }) => {
               return (
                 <Flex
                   $style={{
-                    w: "500px",
+                    w: "400px",
                     queries: {
                       768: {
                         w: "100%",
@@ -352,6 +436,13 @@ const DashLayout = ({ children }) => {
                   }}
                 >
                   <Form style={{ width: "100%" }}>
+                    <Button>
+                      <P
+                        $style={{ weight: "600", size: "16px", color: "white" }}
+                      >
+                        EDITAR DADOS
+                      </P>
+                    </Button>
                     <InputField
                       name="name"
                       placeholder="Seu nome"
@@ -366,7 +457,6 @@ const DashLayout = ({ children }) => {
                       image={1}
                       pass={false}
                     />
-
                     <InputField
                       name="pass"
                       placeholder="Sua senha"
@@ -374,7 +464,6 @@ const DashLayout = ({ children }) => {
                       image={2}
                       pass={true}
                     />
-
                     <InputField
                       name="pix"
                       placeholder="Sua chave Pix"
@@ -382,14 +471,6 @@ const DashLayout = ({ children }) => {
                       image={2}
                       pass={true}
                     />
-
-                    <Button>
-                      <P
-                        $style={{ weight: "600", size: "16px", color: "white" }}
-                      >
-                        EDITAR DADOS
-                      </P>
-                    </Button>
                   </Form>
                 </Flex>
               );

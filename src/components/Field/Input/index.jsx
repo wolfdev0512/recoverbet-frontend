@@ -13,13 +13,14 @@ import {
   UserIcon,
   MailIcon,
   PassIcon,
+  PicIcon,
 } from "assets/icons";
 
 // Component
 import Flex from "components/Base/Flex";
 import { P } from "components/Base/Text";
 
-const IconList = [UserIcon, MailIcon, PassIcon];
+const IconList = [UserIcon, MailIcon, PassIcon, PicIcon];
 
 //-------------------------------------------------
 const InputField = ({ question, pass, image, authError, ...props }) => {

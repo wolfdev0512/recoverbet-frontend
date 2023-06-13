@@ -12,7 +12,13 @@ import ProgressBar from "components/Progess";
 import { RequestItem } from "components/Item";
 
 // styled
-import { Container, Button, ActiveLayout, ActiveButton } from "./styled";
+import {
+  Container,
+  Button,
+  ActiveLayout,
+  ActiveButton,
+  Submit,
+} from "./styled";
 
 // Image
 import { SecurityIcon } from "assets/icons";
@@ -20,14 +26,31 @@ import LogoImage from "assets/images/logo_1.png";
 import LogoSuccessImage from "assets/images/logo_4.png";
 import ImageMoney from "assets/images/money.png";
 
+import InputField from "components/Field/Input";
+
 // hook
 import useModal from "hook/useModal";
+
+// validation
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+const data = [
+  "Selecione a plataforma para realizar a consulta de valores perdidos:",
+  "Selecione a plataforma para realizar a consulta de valores perdidos:",
+  "Selecione a plataforma para realizar a consulta de valores perdidos:",
+];
 
 //------------------------------------------------------
 const Panel = () => {
   const [active, setActive] = useState(0);
+  const [next, setNext] = useState(0);
 
   const [value, setValue] = useState(0);
+
+  const [select1, setSelect1] = useState(0);
+  const [select2, setSelect2] = useState(1);
+  const [select3, setSelect3] = useState(2);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,7 +63,7 @@ const Panel = () => {
     }
 
     return () => clearInterval(interval);
-  }, [value]);
+  }, [active, value]);
 
   const serveModal = useModal();
 
@@ -48,7 +71,9 @@ const Panel = () => {
     <DashLayout>
       <Container>
         {active === 0 ? (
-          <Flex $style={{ gap: "29px", w: "1050px", fDirection: "column" }}>
+          <Flex
+            $style={{ gap: "29px", w: "100%", fDirection: "column", p: "50px" }}
+          >
             <P
               $style={{
                 size: "28px",
@@ -61,16 +86,58 @@ const Panel = () => {
               valores disponíveis para saque referente as suas perdas..
             </P>
             <RequestItem
-              text="Selecione a plataforma para realizar a consulta de valores perdidos:"
-              icon={true}
+              label={data[select1]}
+              container={(onClose) => (
+                <div>
+                  {data.map((item, key) => (
+                    <div
+                      key={key}
+                      onClick={() => {
+                        setSelect1(key);
+                        onClose();
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              )}
             />
             <RequestItem
-              text="Selecione a plataforma para realizar a consulta de valores perdidos:"
-              icon={false}
+              label={data[select2]}
+              container={(onClose) => (
+                <div>
+                  {data.map((item, key) => (
+                    <div
+                      key={key}
+                      onClick={() => {
+                        setSelect2(key);
+                        onClose();
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              )}
             />
             <RequestItem
-              text="Selecione a plataforma para realizar a consulta de valores perdidos:"
-              icon={true}
+              label={data[select3]}
+              container={(onClose) => (
+                <div>
+                  {data.map((item, key) => (
+                    <div
+                      key={key}
+                      onClick={() => {
+                        setSelect3(key);
+                        onClose();
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              )}
             />
             <Flex $style={{ vAlign: "center" }}>
               <SecurityIcon />
@@ -179,7 +246,291 @@ const Panel = () => {
         )}
       </Container>
       <ModalLayout show={serveModal.isOpen} closeModal={serveModal.closeModal}>
-        asdf
+        {next === 1 ? (
+          <Flex
+            $style={{
+              w: "80%",
+              fDirection: "column",
+              vAlign: "center",
+              h: "fit-content",
+              m: "auto",
+            }}
+          >
+            <P
+              $style={{
+                color: "#1DAF51",
+                size: "30px",
+                weight: "700",
+                lH: "150%",
+                align: "center",
+              }}
+            >
+              Solicitação de estorno realizada com sucesso! 🥳🎉
+            </P>
+            <Flex
+              $style={{
+                w: "100%",
+                h: "150px",
+                vAlign: "center",
+                hAlign: "center",
+                back: "#2B2B2B",
+                radius: "12px",
+                m: "25px 0px 25px 0px",
+              }}
+            >
+              <img src={ImageMoney} alt="No money" />
+              <P
+                $style={{
+                  color: "#F9C178",
+                  size: "37px",
+                  weight: "700",
+                  lH: "150%",
+                  m: "0px 0px 0px 20px",
+                }}
+              >
+                R$ 5754,28
+              </P>
+            </Flex>
+
+            <Flex
+              $style={{
+                w: "100%",
+                h: "fit-content",
+                p: "15px 33px",
+                vAlign: "center",
+                hAlign: "center",
+                border: "1px solid #C7C7C7",
+                radius: "60px",
+              }}
+            >
+              <SecurityIcon />
+              <P
+                $style={{
+                  size: "14px",
+                  color: "#C7C7C7",
+                  w: "80%",
+                  m: "0px 0px 0px 16px",
+                }}
+              >
+                O Sistema do Recover Bet já recebeu sua solicitação e estamos
+                processando seu pagamento junto a plataforma selecionada!
+              </P>
+            </Flex>
+            <P
+              $style={{
+                color: "#F6BE76",
+                size: "24px",
+                m: "30px 0px 30px 0px",
+                weight: "600",
+              }}
+            >
+              Sobre a transação:
+            </P>
+
+            <Flex
+              $style={{
+                w: "100%",
+                hAlign: "space-between",
+                back: "#292929",
+                radius: "5px",
+              }}
+            >
+              <P
+                $style={{
+                  color: "#696969",
+                  size: "12px",
+                  weight: "600",
+                  lH: "150%",
+                  align: "center",
+                }}
+              >
+                ID: #5G%evSJt5NEbuXH
+              </P>
+              <P
+                $style={{
+                  color: "#696969",
+                  size: "12px",
+                  weight: "600",
+                  lH: "150%",
+                  align: "center",
+                }}
+              >
+                14:47h
+              </P>
+              <P
+                $style={{
+                  color: "#696969",
+                  size: "12px",
+                  weight: "600",
+                  lH: "150%",
+                  align: "center",
+                }}
+              >
+                06 de Junho, 2023
+              </P>
+              <P
+                $style={{
+                  color: "#696969",
+                  size: "12px",
+                  weight: "600",
+                  lH: "150%",
+                  align: "center",
+                }}
+              >
+                R$5.754,28
+              </P>
+            </Flex>
+            <Flex
+              $style={{
+                w: "100%",
+                h: "60px",
+                m: "25px 0px 0px 0px",
+                back: "#1DAF51",
+                radius: "12px",
+                vAlign: "center",
+                hAlign: "center",
+              }}
+            >
+              <P
+                $style={{
+                  weight: "600",
+                  size: "16px",
+                  lH: "125%",
+                }}
+              >
+                VOLTAR PARA O PAINEL!
+              </P>
+            </Flex>
+            <P
+              $style={{
+                color: "#696969",
+                size: "12px",
+                weight: "600",
+                lH: "150%",
+                align: "center",
+                m: "10px 0px 0px 0px",
+              }}
+            >
+              O valor poder ser creditado em até 2 dias úteis!
+            </P>
+          </Flex>
+        ) : (
+          <Flex
+            $style={{
+              w: "80%",
+              fDirection: "column",
+              vAlign: "center",
+              h: "fit-content",
+              m: "auto",
+            }}
+          >
+            <P
+              $style={{
+                color: "#F6BE76",
+                size: "48px",
+                weight: "700",
+                lH: "150%",
+              }}
+            >
+              Realizar saque
+            </P>
+            <Flex
+              $style={{
+                fDirection: "column",
+                w: "100%",
+                h: "150px",
+                vAlign: "center",
+                hAlign: "center",
+                back: "#2B2B2B",
+                radius: "12px",
+                m: "25px 0px 25px 0px",
+              }}
+            >
+              <Flex
+                $style={{
+                  fDirection: "column",
+                }}
+              >
+                <P>Saldo disponível:</P>
+                <P
+                  $style={{
+                    color: "white",
+                    size: "36px",
+                    weight: "700",
+                    lH: "150%",
+                  }}
+                >
+                  R$10.575,20 reais
+                </P>
+              </Flex>
+            </Flex>
+            <RequestItem
+              label={"Selecione o tipo de chave pix :"}
+              container={(onClose) => (
+                <div>
+                  {data.map((item, key) => (
+                    <div
+                      key={key}
+                      onClick={() => {
+                        setSelect1(key);
+                        onClose();
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
+            <Formik
+              initialValues={{
+                code: "089.98.253-83",
+              }}
+              validationSchema={Yup.object({
+                code: Yup.string().required("Campo obrigatório."),
+              })}
+              onSubmit={(values) => {
+                setNext(1);
+              }}
+            >
+              {({ touched, errors }) => {
+                return (
+                  <Flex
+                    $style={{
+                      w: "100%",
+                    }}
+                  >
+                    <Form style={{ width: "100%" }}>
+                      <InputField
+                        name="code"
+                        placeholder="Insira sua chave pix no campo abaixo:"
+                        question="Insira sua chave pix no campo abaixo:"
+                        image={3}
+                        pass={false}
+                        authError={false}
+                      />
+                      <Submit
+                        touched={Object.keys(touched).length}
+                        error={!errors.code}
+                        authError={false}
+                      >
+                        <P
+                          $style={{
+                            weight: "600",
+                            size: "16px",
+                            lH: "125%",
+                          }}
+                        >
+                          SACAR TODO VALOR
+                        </P>
+                      </Submit>
+                    </Form>
+                  </Flex>
+                );
+              }}
+            </Formik>
+          </Flex>
+        )}
       </ModalLayout>
     </DashLayout>
   );

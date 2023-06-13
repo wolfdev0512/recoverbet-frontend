@@ -7,28 +7,88 @@ import DashLayout from "components/Layouts/DashLayout";
 import Platform from "components/Platform";
 
 // Icon
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+// import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 // styled
-import {
-  Container,
-  Menu,
-  MenuItem,
-  TableContainer,
-  Table,
-  Item,
-} from "./styled";
+import { Container, Menu, MenuItem } from "./styled";
 
 // components
-import Flex from "components/Base/Flex";
-import { P } from "components/Base/Text";
 
 // Image
-import ImageLogo from "assets/images/logo_3.png";
+// import ImageLogo from "assets/images/logo_3.png";
+import Icon from "components/Icon";
+import Table from "components/Table";
 
 //-------------------------------------------------------
 const Withdrawal = () => {
   const [active, setActive] = useState(0);
+  const [status, setStatus] = React.useState({
+    data: [],
+    count: 0,
+    limit: 10,
+    page: 0,
+    total: 0,
+  });
+
+  const onData = (page, limit) => {
+    const mockdata = [
+      {
+        platafoma: "Check",
+        horario: "14:47h",
+        date: "06 de Junho, 2023",
+        status: "Pago",
+        valar: "R$8.375,20",
+      },
+      {
+        platafoma: "Exclamation",
+        horario: "14:47h",
+        date: "06 de Junho, 2023",
+        status: "Pago",
+        valar: "R$8.375,20",
+      },
+      {
+        platafoma: "Setting",
+        horario: "14:47h",
+        date: "06 de Junho, 2023",
+        status: "Pago",
+        valar: "R$8.375,20",
+      },
+      {
+        platafoma: "Logo",
+        horario: "14:47h",
+        date: "06 de Junho, 2023",
+        status: "Pago",
+        valar: "R$8.375,20",
+      },
+      {
+        platafoma: "Logo",
+        horario: "14:47h",
+        date: "06 de Junho, 2023",
+        status: "Pago",
+        valar: "R$8.375,20",
+      },
+    ];
+    if (limit !== status.limit) setStatus({ ...status, limit });
+    setStatus({
+      data: mockdata,
+      count: mockdata.length,
+      limit: 10,
+      page: 0,
+      total: mockdata.length,
+    });
+  };
+
+  const fields = [
+    {
+      key: "platafoma",
+      label: "Platafoma",
+      render: (v, i) => <Icon icon={v} />,
+    },
+    { key: "horario", label: "Horario", render: (v, i) => <span>{v}</span> },
+    { key: "date", label: "Data", render: (v, i) => <span>{v}</span> },
+    { key: "status", label: "Status", render: (v, i) => <span>{v}</span> },
+    { key: "valar", label: "Valor", render: (v, i) => <span>{v}</span> },
+  ];
 
   return (
     <DashLayout>
@@ -48,7 +108,21 @@ const Withdrawal = () => {
             Em processamento
           </MenuItem>
         </Menu>
-        <TableContainer>
+
+        <Table
+          header={
+            <div>
+              Showing {status.count} Token Contracts (From a total of{" "}
+              {status.total} Token Contracts)
+            </div>
+          }
+          page={status.page}
+          total={status.total}
+          fields={fields}
+          data={status.data}
+          onData={onData}
+        />
+        {/* <TableContainer>
           <Table>
             <tr>
               <th>Platafoma</th>
@@ -175,7 +249,7 @@ const Withdrawal = () => {
               <AiOutlineArrowRight />
             </Item>
           </Flex>
-        </TableContainer>
+        </TableContainer> */}
       </Container>
     </DashLayout>
   );

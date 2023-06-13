@@ -7,16 +7,22 @@ export const Layout = styled.div`
 
   width: 100%;
   max-width: 100%;
-
-  margin-top: 50px;
 `;
 
 export const SwiperItem = styled.div`
   height: 130px;
   padding: 25px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   background: linear-gradient(218.38deg, #050505 -41.34%, #181818 63.06%);
   border-radius: 5px;
+
+  @media screen and (max-width: 1440px) {
+    height: 100px;
+  }
 `;
 
 export const LogoIcon = styled.img`

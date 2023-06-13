@@ -40,6 +40,10 @@ export const TableContainer = styled.div`
 
   background: linear-gradient(218.38deg, #050505 -41.34%, #181818 63.06%);
   border-radius: 5px 5px 5px 7px;
+
+  @media screen and (max-width: 768px) {
+    height: fit-content;
+  }
 `;
 export const Table = styled.table`
   width: 100%;

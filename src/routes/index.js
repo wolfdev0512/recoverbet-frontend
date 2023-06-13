@@ -13,6 +13,8 @@ import {
   Panel,
   Request,
   Withdrawal,
+  Support,
+  DataPage,
 } from "pages";
 
 //-------------------------------------------------------------------------
@@ -38,6 +40,8 @@ const router = createBrowserRouter([
           { path: "", element: <Panel /> },
           { path: "request", element: <Request /> },
           { path: "withdrawal", element: <Withdrawal /> },
+          { path: "support", element: <Support /> },
+          { path: "data", element: <DataPage /> },
         ],
       },
       { path: "404", element: <Lost /> },

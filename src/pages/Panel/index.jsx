@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Layout
 import DashLayout from "components/Layouts/DashLayout";
@@ -9,6 +9,9 @@ import Platform from "components/Platform";
 import { P } from "components/Base/Text";
 import Flex from "components/Base/Flex";
 import ProgressBar from "components/Progess";
+
+//hook
+import useResize from "hook/useResize";
 
 // styled
 import {
@@ -37,8 +40,8 @@ import {
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -68,22 +71,49 @@ const data = [
 const Panel = () => {
   const [active, setActive] = useState(false);
 
+  const [w] = useResize();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (w <= 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [w]);
+
   return (
     <DashLayout>
-      {/* <Container>
-        <Platform active={active} />
+      <Container>
+        {!isMobile && <Platform active={active} />}
         <Flex
           $style={{
             w: "100%",
-            h: "100%",
             m: "20px 0px 0px 0px",
             gap: "50px",
+            queries: {
+              1440: {
+                fDirection: "column",
+              },
+            },
           }}
         >
           <ContentContainer>
             <Flex $style={{ fDirection: "column" }}>
               <P
-                $style={{ size: "28px", weight: "500", m: "0px 0px 25px 0px" }}
+                $style={{
+                  size: "28px",
+                  weight: "500",
+                  m: "0px 0px 25px 0px",
+                  queries: {
+                    1440: {
+                      size: "24px",
+                    },
+                    425: {
+                      m: "0px 0px 25px 30px",
+                    },
+                  },
+                }}
               >
                 Sua carteira
               </P>
@@ -203,6 +233,11 @@ const Panel = () => {
                       fDirection: "column",
                       back: "linear-gradient(218.38deg, #050505 -41.34%, #181818 63.06%);",
                       radius: "5px",
+                      queries: {
+                        600: {
+                          p: "25px 30px",
+                        },
+                      },
                     }}
                   >
                     <P
@@ -211,6 +246,14 @@ const Panel = () => {
                         weight: "600",
                         size: "45px",
                         m: "0px 0px 25px 0px",
+                        queries: {
+                          1440: {
+                            size: "35px",
+                          },
+                          768: {
+                            size: "28px",
+                          },
+                        },
                       }}
                     >
                       Gabrielo Lopes
@@ -221,17 +264,48 @@ const Panel = () => {
                         weight: "600",
                         size: "24px",
                         m: "0px 0px 25px 0px",
+                        queries: {
+                          1440: {
+                            size: "20px",
+                          },
+                          768: {
+                            size: "16px",
+                          },
+                        },
                       }}
                     >
                       Primeiros passos
                     </P>
-                    <ProgressBar max={100} value={60} />
+                    <Flex
+                      $style={{
+                        w: "600px",
+                        h: "fit-content",
+                        queries: {
+                          1700: {
+                            w: "400px",
+                          },
+                          768: {
+                            w: "100%",
+                          },
+                        },
+                      }}
+                    >
+                      <ProgressBar max={100} value={60} />
+                    </Flex>
                     <P
                       $style={{
                         color: "white",
                         weight: "500",
                         size: "20px",
                         m: "10px 0px 10px 0px",
+                        queries: {
+                          1440: {
+                            size: "16px",
+                          },
+                          768: {
+                            size: "12px",
+                          },
+                        },
                       }}
                     >
                       Realize alguns processos para liberar sua carteira
@@ -241,6 +315,11 @@ const Panel = () => {
                         color: "#C7C7C7",
                         weight: "400",
                         size: "18px",
+                        queries: {
+                          768: {
+                            size: "14px",
+                          },
+                        },
                       }}
                     >
                       1-3 processos
@@ -255,13 +334,31 @@ const Panel = () => {
                     >
                       <Flex $style={{ vAlign: "center" }}>
                         <EmailIcon />
-                        <P $style={{ m: "0px 0px 0px 10px" }}>
+                        <P
+                          $style={{
+                            m: "0px 0px 0px 10px",
+                            queries: {
+                              768: {
+                                size: "12px",
+                              },
+                            },
+                          }}
+                        >
                           Anote o e-mail utilizado na plataforma
                         </P>
                       </Flex>
                       <Flex $style={{ vAlign: "center" }}>
                         <ClockIcon />
-                        <P $style={{ m: "0px 0px 0px 10px" }}>
+                        <P
+                          $style={{
+                            m: "0px 0px 0px 10px",
+                            queries: {
+                              768: {
+                                size: "12px",
+                              },
+                            },
+                          }}
+                        >
                           Anote o e-mail utilizado na plataforma
                         </P>
                       </Flex>
@@ -316,40 +413,42 @@ const Panel = () => {
               </Flex>
             </Flex>
             <Chart>
-              <AreaChart
-                width={350}
-                height={350}
-                data={data}
-                margin={{
-                  top: 30,
-                  right: 0,
-                  left: -30,
-                  bottom: 0,
-                }}
-              >
-                <defs>
-                  <linearGradient id="colordata" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#F6BF78" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#F6BF78" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip
-                  cursor={false}
-                  contentStyle={{ background: "none", color: "green" }}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="data"
-                  stroke="#F6BF78"
-                  fill={"url(#colordata)"}
-                />
-              </AreaChart>
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart
+                  width={350}
+                  height={350}
+                  data={data}
+                  margin={{
+                    top: 30,
+                    right: 0,
+                    left: -30,
+                    bottom: 0,
+                  }}
+                >
+                  <defs>
+                    <linearGradient id="colordata" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#F6BF78" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#F6BF78" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip
+                    cursor={false}
+                    contentStyle={{ background: "none", color: "green" }}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="data"
+                    stroke="#F6BF78"
+                    fill={"url(#colordata)"}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </Chart>
           </ChartContainer>
         </Flex>
-      </Container> */}
+      </Container>
     </DashLayout>
   );
 };
