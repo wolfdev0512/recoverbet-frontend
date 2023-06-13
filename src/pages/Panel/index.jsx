@@ -52,7 +52,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
+const dataChart = [
   {
     name: "19 de Mai",
     data: 13,
@@ -438,7 +438,7 @@ const Panel = () => {
                 <AreaChart
                   width={350}
                   height={350}
-                  data={data}
+                  data={dataChart}
                   margin={{
                     top: 30,
                     right: 0,
