@@ -26,6 +26,20 @@ export const Sidebar = styled.div`
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12), 0px 8px 16px rgba(0, 0, 0, 0.12);
 
   border-radius: 0px 25px 25px 0px;
+
+
+
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    width: 100%;
+    height: 95px;
+    padding: 0 0 10px;
+    line-height: 80px;
+    z-index: 9999;
+  }
 `;
 
 export const MenuContainer = styled.div`
@@ -36,11 +50,21 @@ export const MenuContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    > div:last-child {
+      display: none;
+    }
+  }
 `;
 
 export const Image = styled.img`
   width: 150px;
   height: 150px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 export const Menu = styled.div`
   width: 100%;
@@ -48,6 +72,12 @@ export const Menu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+  }
 `;
 export const Main = styled.div`
   margin-top: 25px;
@@ -55,6 +85,54 @@ export const Main = styled.div`
   width: 100%;
 
   padding: 10px 10px 0px 10px;
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    margin-top: 0;
+    padding: 0;
+    height: 100%;
+
+    > * {
+      &:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 2;
+      }
+      &:nth-child(2) {
+        grid-area: 1 / 3 / 2 / 4;
+        margin-top: -15px;
+        color: #A9A8AA;
+
+        > div {
+          padding: 16px;
+          width: auto;
+          height: auto;
+          background: #F6BE76;
+          border-radius: 7px;
+
+          > svg {
+            width: 22px;
+            height: 22px;
+          }
+        }
+      }
+      &:nth-child(3) {
+        grid-area: 1 / 2 / 2 / 3;
+      }
+      &:nth-child(4) {
+        grid-area: 1 / 4 / 2 / 5;
+      }
+      &:nth-child(5) {
+        grid-area: 1 / 5 / 2 / 6;
+      }
+    }
+
+    > * {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
 `;
 export const MainContainer = styled.div`
   width: calc(100vw - 294px);
@@ -63,6 +141,11 @@ export const MainContainer = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 20px;
+  }
 `;
 export const Header = styled.div`
   display: flex;

@@ -45,7 +45,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "redux/features/userSlice";
 
 // router
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 // image
 import LogoImage from "assets/images/logo_1.png";
@@ -59,6 +59,7 @@ import { RiWhatsappFill } from "react-icons/ri";
 // validation
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import useResize from "hook/useResize";
 
 // Heading Data
 const HeadingList = [
@@ -77,20 +78,41 @@ const HeadingList = [
     heading: "Meus saques",
     detail: "Verifique seus saques",
   },
+  {
+    url: "/dash/support",
+    heading: "",
+    detail: "",
+  },
+  {
+    url: "/dash/data",
+    heading: "",
+    detail: "",
+  },
 ];
 
 //---------------------------------------------------------
-const DashLayout = ({ children }) => {
+const DashLayout = () => {
   // Redux
   const dispatch = useDispatch();
 
   // Router
   const location = useLocation();
   const navigate = useNavigate();
+  
+  const [w,] = useResize();
+  const [isMobile, setIsMobile] = useState(false);
 
   const loginUser = useSelector((state) => state.user);
 
   const [content, setContent] = useState({ heading: "", detail: "" });
+
+  useEffect(() => {
+    if (w <= 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [w])
 
   useEffect(() => {
     setContent({
@@ -124,11 +146,12 @@ const DashLayout = ({ children }) => {
                 icon={RequestIcon}
                 text="Solicitar"
                 to={"/dash/request"}
+                mobile="#0B0B0B"
               />
-
               <MenuItem
                 icon={WithdrawalIcon}
                 text="Meus saques"
+                tempText={"Saques"}
                 to={"/dash/withdrawal"}
               />
               <div
@@ -136,14 +159,23 @@ const DashLayout = ({ children }) => {
                   supportModal.openModal();
                 }}
               >
-                <MenuItem icon={SupportIcon} text="Suporte" />
+                <MenuItem
+                  icon={SupportIcon}
+                  text="Suporte"
+                  to={isMobile ? "/dash/support" : "#"}
+                />
               </div>
               <div
                 onClick={() => {
                   userModal.openModal();
                 }}
               >
-                <MenuItem icon={DataIcon} text="Meus Dados" />
+                <MenuItem
+                  icon={DataIcon}
+                  text="Meus Dados"
+                  to={isMobile ? "/dash/data" : "#"}
+                  tempText={"Dados"}
+                />
               </div>
             </Main>
           </Menu>
@@ -199,7 +231,7 @@ const DashLayout = ({ children }) => {
             </Flex>
           </User>
         </Header>
-        {children}
+        <Outlet />
       </MainContainer>
 
       {/* Support Modal */}

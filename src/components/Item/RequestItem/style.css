@@ -1,0 +1,86 @@
+.dropdown {
+  position: relative;
+  margin-bottom: 0.7rem;
+}
+
+.dropdown .dropdown-picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: var(--light);
+  padding: 20px 30px;
+  border: 1px solid #9B9B9B;
+  color: #9B9B9B;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+.dropdown .dropdown-picker:hover {
+  border: 1px solid #5e5e5e;
+}
+
+@keyframes SlideUp {
+  0%{
+      opacity: 0;
+      transform: translate(0, 0.5rem);
+  }
+  100% {
+      opacity: 1;
+      transform: translate(0, 0);
+  }
+}
+
+@keyframes SlideDown {
+  0%{
+      opacity: 1;
+      transform: translate(0, 0);
+  }
+  100% {
+      opacity: 0;
+      transform: translate(0, 0.5rem);
+  }
+}
+
+.dropdown .dropdown-box {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  width: 100%;
+  background: #0C0C0C;
+  padding: 0.8rem 0.5rem;
+  border: 1px solid #DCDCDC4D;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 0.5rem 0 #181818;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.dropdown .dropdown-box > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown .dropdown-box > div > div {
+  padding: 10px 30px;
+}
+
+.dropdown .dropdown-box.dropdown-box-show {
+  /* animation: SlideUp .5s; */
+}
+
+.dropdown .dropdown-box.dropdown-box-hide {
+  /* animation: SlideDown .5s; */
+  display: none;
+}
+
+.dropdown .dropdown-box li {
+  list-style: none;
+  display: block;
+  padding: 0.8rem;
+}
+
+.dropdown .dropdown-box li:hover {
+  background: var(--border);
+  border-radius: 10px;
+  transition: background ease-in-out .3s;
+}

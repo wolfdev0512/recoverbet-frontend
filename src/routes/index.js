@@ -14,6 +14,8 @@ import {
   Request,
   Withdrawal,
 } from "pages";
+import SupportPage from "pages/Support";
+import DataPage from "pages/Data";
 
 //-------------------------------------------------------------------------
 
@@ -38,6 +40,8 @@ const router = createBrowserRouter([
           { path: "", element: <Panel /> },
           { path: "request", element: <Request /> },
           { path: "withdrawal", element: <Withdrawal /> },
+          { path: "support", element: <SupportPage /> },
+          { path: "data", element: <DataPage /> },
         ],
       },
       { path: "404", element: <Lost /> },

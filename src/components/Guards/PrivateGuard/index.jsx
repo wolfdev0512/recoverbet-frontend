@@ -1,3 +1,4 @@
+import DashLayout from "components/Layouts/DashLayout";
 import React from "react";
 
 // redux
@@ -11,11 +12,11 @@ import { Navigate, Outlet } from "react-router-dom";
 const PrivateRouteGuard = () => {
   const authenticated = useSelector((state) => state.user.user);
 
-  if (!authenticated) {
-    return <Navigate to="/" />;
-  }
+  // if (!authenticated) {
+  //   return <Navigate to="/" />;
+  // }
 
-  return <Outlet />;
+  return <DashLayout><Outlet /></DashLayout>;
 };
 
 export default PrivateRouteGuard;
