@@ -288,7 +288,7 @@ const DashLayout = ({ children }) => {
       >
         <Flex
           $style={{
-            w: "400px",
+            w: "80%",
             fDirection: "column",
             vAlign: "center",
           }}
@@ -343,7 +343,7 @@ const DashLayout = ({ children }) => {
               return (
                 <Flex
                   $style={{
-                    w: "400px",
+                    w: "500px",
                     queries: {
                       768: {
                         w: "100%",
@@ -352,13 +352,6 @@ const DashLayout = ({ children }) => {
                   }}
                 >
                   <Form style={{ width: "100%" }}>
-                    <Button>
-                      <P
-                        $style={{ weight: "600", size: "16px", color: "white" }}
-                      >
-                        EDITAR DADOS
-                      </P>
-                    </Button>
                     <InputField
                       name="name"
                       placeholder="Seu nome"
@@ -373,6 +366,7 @@ const DashLayout = ({ children }) => {
                       image={1}
                       pass={false}
                     />
+
                     <InputField
                       name="pass"
                       placeholder="Sua senha"
@@ -380,6 +374,7 @@ const DashLayout = ({ children }) => {
                       image={2}
                       pass={true}
                     />
+
                     <InputField
                       name="pix"
                       placeholder="Sua chave Pix"
@@ -387,6 +382,14 @@ const DashLayout = ({ children }) => {
                       image={2}
                       pass={true}
                     />
+
+                    <Button>
+                      <P
+                        $style={{ weight: "600", size: "16px", color: "white" }}
+                      >
+                        EDITAR DADOS
+                      </P>
+                    </Button>
                   </Form>
                 </Flex>
               );

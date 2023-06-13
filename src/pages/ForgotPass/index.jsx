@@ -61,7 +61,7 @@ const Register = () => {
             <P
               $style={{
                 size: "48px",
-                weight: "800",
+                weight: "600",
                 family: "sora",
                 queries: {
                   768: {
@@ -83,6 +83,7 @@ const Register = () => {
                 align: "center",
                 queries: {
                   768: {
+                    w: "90%",
                     size: "18px",
                   },
                 },
@@ -171,7 +172,7 @@ const Register = () => {
               $style={{
                 family: "sora",
                 size: "42px",
-                weight: "800",
+                weight: "600",
                 lH: "125%",
                 m: "0px 0px 10px 0px",
                 align: "center",
@@ -180,7 +181,7 @@ const Register = () => {
                     size: "36px",
                   },
                   425: {
-                    w: "250px",
+                    w: "270px",
                     size: "30px",
                   },
                 },
@@ -191,7 +192,8 @@ const Register = () => {
             <P
               $style={{
                 size: "20px",
-                weight: "800",
+                weight: "600",
+                align: "center",
                 queries: {
                   768: {
                     size: "18px",
@@ -205,7 +207,7 @@ const Register = () => {
               $style={{
                 w: "400px",
                 size: "20px",
-                weight: "500",
+                weight: "300",
                 align: "center",
                 queries: {
                   768: {

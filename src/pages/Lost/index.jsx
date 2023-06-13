@@ -25,11 +25,14 @@ const Lost = () => {
             lH: "125%",
             queries: {
               1024: {
-                size: "36px",
+                size: "34px",
               },
               768: {
                 w: "90%",
                 align: "center",
+              },
+              425: {
+                size: "28px",
               },
             },
           }}
@@ -50,6 +53,9 @@ const Lost = () => {
               768: {
                 size: "18px",
                 w: "300px",
+              },
+              425: {
+                size: "16px",
               },
             },
           }}
