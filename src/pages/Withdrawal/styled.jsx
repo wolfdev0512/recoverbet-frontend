@@ -34,6 +34,7 @@ export const TableContainer = styled.div`
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 0px;
+    background-color: transparent;
   }
 
   padding: 40px 80px;

@@ -28,6 +28,9 @@ import ImageMoney from "assets/images/money.png";
 
 import InputField from "components/Field/Input";
 
+// router
+import { useNavigate } from "react-router-dom";
+
 // hook
 import useModal from "hook/useModal";
 
@@ -43,6 +46,7 @@ const data = [
 
 //------------------------------------------------------
 const Panel = () => {
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [next, setNext] = useState(0);
 
@@ -127,24 +131,7 @@ const Panel = () => {
                 </div>
               )}
             />
-            <RequestItem
-              label={data[select2]}
-              container={(onClose) => (
-                <div>
-                  {data.map((item, key) => (
-                    <div
-                      key={key}
-                      onClick={() => {
-                        setSelect2(key);
-                        onClose();
-                      }}
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              )}
-            />
+            <RequestItem hideIcon={true} label={data[select2]} />
             <RequestItem
               label={data[select3]}
               container={(onClose) => (
@@ -423,27 +410,34 @@ const Panel = () => {
                 R$5.754,28
               </P>
             </Flex>
-            <Flex
-              $style={{
-                w: "100%",
-                h: "60px",
-                m: "25px 0px 0px 0px",
-                back: "#1DAF51",
-                radius: "12px",
-                vAlign: "center",
-                hAlign: "center",
+            <div
+              style={{ width: "100%" }}
+              onClick={() => {
+                navigate("/dash");
               }}
             >
-              <P
+              <Flex
                 $style={{
-                  weight: "600",
-                  size: "16px",
-                  lH: "125%",
+                  w: "100%",
+                  h: "60px",
+                  m: "25px 0px 0px 0px",
+                  back: "#1DAF51",
+                  radius: "12px",
+                  vAlign: "center",
+                  hAlign: "center",
                 }}
               >
-                VOLTAR PARA O PAINEL!
-              </P>
-            </Flex>
+                <P
+                  $style={{
+                    weight: "600",
+                    size: "16px",
+                    lH: "125%",
+                  }}
+                >
+                  VOLTAR PARA O PAINEL!
+                </P>
+              </Flex>
+            </div>
             <P
               $style={{
                 color: "#696969",

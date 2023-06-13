@@ -37,6 +37,7 @@ export const Layout = styled.div`
 
   &::-webkit-scrollbar {
     width: 0px;
+    background-color: transparent;
   }
 
   padding: 70px 0px 70px 0px;

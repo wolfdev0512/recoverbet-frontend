@@ -237,6 +237,7 @@ export const Container = styled.div`
 
   &::-webkit-scrollbar {
     width: 0px;
+    background-color: transparent;
   }
 
   @media screen and (max-width: 768px) {

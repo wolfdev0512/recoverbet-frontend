@@ -10,6 +10,14 @@ import { P } from "components/Base/Text";
 import Flex from "components/Base/Flex";
 import ProgressBar from "components/Progess";
 
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { setData } from "redux/features/dataSlice";
+
+// router
+
+import { useNavigate } from "react-router-dom";
+
 //hook
 import useResize from "hook/useResize";
 
@@ -69,7 +77,19 @@ const data = [
 
 //------------------------------------------------------
 const Panel = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [active, setActive] = useState(false);
+
+  const data = useSelector((state) => state.data.data);
+
+  useEffect(() => {
+    if (data) {
+      setActive(true);
+      dispatch(setData({ data: false }));
+    }
+  }, []);
 
   const [w] = useResize();
   const [isMobile, setIsMobile] = useState(false);
@@ -365,7 +385,8 @@ const Panel = () => {
                     </Flex>
                     <Button
                       onClick={() => {
-                        setActive(true);
+                        dispatch(setData({ data: true }));
+                        navigate("/dash/request");
                       }}
                     >
                       <P $style={{ weight: 600, size: "16px", color: "white" }}>
