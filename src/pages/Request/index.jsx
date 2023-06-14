@@ -139,7 +139,10 @@ const Panel = () => {
             />
             <RequestItem hideIcon={true} label={data[select2]} />
             <DateContainer>
-              <DateRangePicker showOneCalendar />
+              <DateRangePicker
+                showOneCalendar
+                placeholder="Selecione o período para consulta e análise de perdas…"
+              />
             </DateContainer>
             <Flex $style={{ vAlign: "center" }}>
               <SecurityIcon />
