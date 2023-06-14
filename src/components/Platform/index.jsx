@@ -21,9 +21,13 @@ const Platform = (props) => {
   return (
     <Layout>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={1.5}
         spaceBetween={50}
         breakpoints={{
+          425: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
           768: {
             slidesPerView: 1.5,
             spaceBetween: 20,

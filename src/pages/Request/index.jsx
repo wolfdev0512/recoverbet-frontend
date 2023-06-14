@@ -427,7 +427,7 @@ const Panel = () => {
                 $style={{
                   size: "14px",
                   color: "#C7C7C7",
-                  w: "80%",
+                  w: "100%",
                   m: "0px 0px 0px 16px",
                   queries: {
                     768: { size: "12px" },
@@ -460,9 +460,15 @@ const Panel = () => {
                 back: "#292929",
                 radius: "5px",
                 vAlign: "center",
+                p: "10px",
+                queries: {
+                  500: {
+                    fDirection: "column",
+                  },
+                },
               }}
             >
-              <P
+              <Span
                 $style={{
                   color: "#696969",
                   size: "12px",
@@ -472,8 +478,8 @@ const Panel = () => {
                 }}
               >
                 ID: #5G%evSJt5NEbuXH
-              </P>
-              <P
+              </Span>
+              <Span
                 $style={{
                   color: "#696969",
                   size: "12px",
@@ -483,8 +489,8 @@ const Panel = () => {
                 }}
               >
                 14:47h
-              </P>
-              <P
+              </Span>
+              <Span
                 $style={{
                   color: "#696969",
                   size: "12px",
@@ -494,8 +500,8 @@ const Panel = () => {
                 }}
               >
                 06 de Junho, 2023
-              </P>
-              <P
+              </Span>
+              <Span
                 $style={{
                   color: "#696969",
                   size: "12px",
@@ -505,7 +511,7 @@ const Panel = () => {
                 }}
               >
                 R$5.754,28
-              </P>
+              </Span>
             </Flex>
             <div
               style={{ width: "100%" }}

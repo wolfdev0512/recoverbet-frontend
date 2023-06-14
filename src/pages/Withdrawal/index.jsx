@@ -22,37 +22,37 @@ import Table from "components/Table";
 const mockdata = [
   {
     platafoma: "Check",
-    horario: "14:47h",
+    horario: "10:22h",
     date: "06 de Junho, 2023",
     status: "Pago",
     valar: "R$8.375,20",
   },
   {
     platafoma: "Exclamation",
-    horario: "14:47h",
+    horario: "22:27h",
     date: "06 de Junho, 2023",
-    status: "Pago",
+    status: "Pendente",
     valar: "R$8.375,20",
   },
   {
     platafoma: "Setting",
-    horario: "14:47h",
-    date: "06 de Junho, 2023",
-    status: "Pago",
+    horario: "05:47h",
+    date: "05 de Junho, 2023",
+    status: "Pendente",
     valar: "R$8.375,20",
   },
   {
     platafoma: "Logo",
-    horario: "14:47h",
-    date: "06 de Junho, 2023",
-    status: "Pago",
+    horario: "09:55h",
+    date: "05 de Junho, 2023",
+    status: "Em processamento",
     valar: "R$8.375,20",
   },
   {
     platafoma: "Logo",
-    horario: "14:47h",
-    date: "06 de Junho, 2023",
-    status: "Pago",
+    horario: "18:08h",
+    date: "04 de Junho, 2023",
+    status: "Em processamento",
     valar: "R$8.375,20",
   },
 ];
@@ -63,7 +63,7 @@ const Withdrawal = () => {
   const [status, setStatus] = React.useState({
     data: [],
     count: 0,
-    limit: 10,
+    limit: 5,
     page: 0,
     total: 0,
   });
