@@ -242,6 +242,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: 768px) {
     height: fit-content;
+    margin: auto;
   }
 `;
 

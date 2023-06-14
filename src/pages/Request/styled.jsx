@@ -6,9 +6,7 @@ import ImageBack from "assets/images/back.png";
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 100%;
-
-  height: calc(100vh - 300px);
+  height: 100%;
 
   display: flex;
   flex-direction: column;
