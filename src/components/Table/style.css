@@ -1,79 +1,97 @@
 table {
-    width: 100%;
-    border-spacing: 0;
-    font-family: Poppins;
-    border-collapse: collapse;
+  width: 100%;
+  border-spacing: 0;
+  font-family: Poppins;
+  border-collapse: collapse;
 }
 
 .table {
+  overflow-x: auto;
+  background: linear-gradient(218.38deg, #050505 -41.34%, #181818 63.06%);
+  padding: 16px 80px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1440px) {
+  .table {
     overflow-x: auto;
     background: linear-gradient(218.38deg, #050505 -41.34%, #181818 63.06%);
-    padding: 16px 80px;
+    padding: 16px 50px;
     border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .table {
+    overflow-x: auto;
+    background: linear-gradient(218.38deg, #050505 -41.34%, #181818 63.06%);
+    padding: 16px 20px;
+    border-radius: 5px;
+  }
 }
 
 .tbl-body {
-    overflow: auto;
-    max-height: 540px;
-    margin-bottom: 20px;
+  overflow: auto;
+  max-height: 540px;
+  margin-bottom: 20px;
 }
 
 .table table th {
-    word-spacing: nowrap;
-    color: var(--color-secondary);
-    text-align: left;
+  word-spacing: nowrap;
+  color: var(--color-secondary);
+  text-align: left;
 }
 
 .table thead tr {
-    border-bottom: 1px solid rgba(210, 210, 210, 0.25);
+  border-bottom: 1px solid rgba(210, 210, 210, 0.25);
 }
 
 .table tbody tr {
-    border-bottom: 1px solid rgba(65, 65, 65, 0.35);
+  border-bottom: 1px solid rgba(65, 65, 65, 0.35);
 }
 
 .table tbody {
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .table table th,
 .table table td {
-    border-top: 1px solid var(--border);
-    padding: 15px 10px;
-    white-space: nowrap;
+  border-top: 1px solid var(--border);
+  padding: 15px 10px;
+  white-space: nowrap;
 }
 
 .table table td {
-    color: #696969;
-    font-size: 14px;
+  color: #696969;
+  font-size: 14px;
 }
 
 .table table .nodata {
-    padding: 15px;
-    background-color: var(--border);
-    text-align: center;
-    border-radius: 5px;
+  padding: 15px;
+  background-color: var(--border);
+  text-align: center;
+  border-radius: 5px;
 }
 
 .tbl-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 0.5em;
-    padding-bottom: 1em;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+  gap: 10px;
 }
 
 .tbl-footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 1em;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 1em;
+  gap: 10px;
 
-    select,
-    select option {
-        padding: 5px;
-        font-size: 12px;
-    }
+  select,
+  select option {
+    padding: 5px;
+    font-size: 12px;
+  }
 }

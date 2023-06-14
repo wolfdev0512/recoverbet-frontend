@@ -12,7 +12,7 @@ import ProgressBar from "components/Progess";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { setData } from "redux/features/dataSlice";
+import { setData, setValue } from "redux/features/dataSlice";
 
 // router
 
@@ -80,6 +80,8 @@ const Panel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const tempValue = useSelector((state) => state.data.value);
+
   const [active, setActive] = useState(false);
 
   const data = useSelector((state) => state.data.data);
@@ -129,9 +131,6 @@ const Panel = () => {
                     1440: {
                       size: "24px",
                     },
-                    425: {
-                      m: "0px 0px 25px 30px",
-                    },
                   },
                 }}
               >
@@ -145,6 +144,14 @@ const Panel = () => {
                       fDirection: "column",
                       back: "linear-gradient(218.38deg, #050505 -41.34%, #181818 63.06%);",
                       radius: "5px",
+                      queries: {
+                        1024: {
+                          p: "50px",
+                        },
+                        500: {
+                          p: "30px",
+                        },
+                      },
                     }}
                   >
                     <P
@@ -153,6 +160,14 @@ const Panel = () => {
                         weight: "600",
                         size: "45px",
                         m: "0px 0px 25px 0px",
+                        queries: {
+                          768: {
+                            size: "30px",
+                          },
+                          500: {
+                            size: "25px",
+                          },
+                        },
                       }}
                     >
                       Gabrielo Lopes
@@ -162,6 +177,14 @@ const Panel = () => {
                         color: "rgba(199, 199, 199, 0.5)",
                         size: "16px",
                         m: "0px 0px 25px 0px",
+                        queries: {
+                          768: {
+                            size: "14px",
+                          },
+                          500: {
+                            size: "13px",
+                          },
+                        },
                       }}
                     >
                       Sua chave pix
@@ -174,6 +197,15 @@ const Panel = () => {
                         vAlign: "center",
                         back: "#161411",
                         radius: "6px",
+
+                        queries: {
+                          768: {
+                            p: "10px 20px 10px 20px",
+                          },
+                          500: {
+                            p: "10px 15px",
+                          },
+                        },
                       }}
                     >
                       <Flex $style={{ vAlign: "center" }}>
@@ -183,6 +215,11 @@ const Panel = () => {
                             family: "sora",
                             size: "20px",
                             m: "0px 0px 0px 10px",
+                            queries: {
+                              500: {
+                                size: "16px",
+                              },
+                            },
                           }}
                         >
                           089.98.253-83
@@ -196,14 +233,27 @@ const Panel = () => {
                           weight: "600",
                           size: "43px",
                           m: "25px 0px 10px 0px",
+                          queries: {
+                            768: {
+                              size: "35px",
+                            },
+                            500: {
+                              size: "26px",
+                            },
+                          },
                         }}
                       >
-                        R$5.375,50 reais
+                        R${tempValue} reais
                       </P>
                       <P
                         $style={{
                           color: "rgba(199, 199, 199, 0.5)",
                           size: "16px",
+                          queries: {
+                            768: {
+                              size: "14px",
+                            },
+                          },
                         }}
                       >
                         Valor disponível
@@ -219,6 +269,11 @@ const Panel = () => {
                           fDirection: "column",
                           vAlign: "center",
                           m: "0px 25px 0px 0px",
+                          queries: {
+                            500: {
+                              m: "0px 15px 0px 0px",
+                            },
+                          },
                         }}
                       >
                         <ArrowIcon />
@@ -386,6 +441,7 @@ const Panel = () => {
                     <Button
                       onClick={() => {
                         dispatch(setData({ data: true }));
+                        dispatch(setValue());
                         navigate("/dash/request");
                       }}
                     >
@@ -415,7 +471,14 @@ const Panel = () => {
                     Total disponível
                   </P>
                   <P $style={{ size: "24px", weight: "500" }}>
-                    R$ 28.000.197.327,00
+                    R${" "}
+                    {Math.floor(Math.random() * 100) > 0
+                      ? Math.floor(Math.random() * 100)
+                      : 34}
+                    .{Math.floor(Math.random() * 1000)}.
+                    {Math.floor(Math.random() * 1000)}.
+                    {Math.floor(Math.random() * 1000)},
+                    {Math.floor(Math.random() * 10)}
                   </P>
                 </Flex>
               </Total>

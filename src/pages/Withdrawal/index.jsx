@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Layout
 import DashLayout from "components/Layouts/DashLayout";
@@ -19,6 +19,44 @@ import { Container, Menu, MenuItem } from "./styled";
 import Icon from "components/Icon";
 import Table from "components/Table";
 
+const mockdata = [
+  {
+    platafoma: "Check",
+    horario: "14:47h",
+    date: "06 de Junho, 2023",
+    status: "Pago",
+    valar: "R$8.375,20",
+  },
+  {
+    platafoma: "Exclamation",
+    horario: "14:47h",
+    date: "06 de Junho, 2023",
+    status: "Pago",
+    valar: "R$8.375,20",
+  },
+  {
+    platafoma: "Setting",
+    horario: "14:47h",
+    date: "06 de Junho, 2023",
+    status: "Pago",
+    valar: "R$8.375,20",
+  },
+  {
+    platafoma: "Logo",
+    horario: "14:47h",
+    date: "06 de Junho, 2023",
+    status: "Pago",
+    valar: "R$8.375,20",
+  },
+  {
+    platafoma: "Logo",
+    horario: "14:47h",
+    date: "06 de Junho, 2023",
+    status: "Pago",
+    valar: "R$8.375,20",
+  },
+];
+
 //-------------------------------------------------------
 const Withdrawal = () => {
   const [active, setActive] = useState(0);
@@ -31,51 +69,17 @@ const Withdrawal = () => {
   });
 
   const onData = (page, limit) => {
-    const mockdata = [
-      {
-        platafoma: "Check",
-        horario: "14:47h",
-        date: "06 de Junho, 2023",
-        status: "Pago",
-        valar: "R$8.375,20",
-      },
-      {
-        platafoma: "Exclamation",
-        horario: "14:47h",
-        date: "06 de Junho, 2023",
-        status: "Pago",
-        valar: "R$8.375,20",
-      },
-      {
-        platafoma: "Setting",
-        horario: "14:47h",
-        date: "06 de Junho, 2023",
-        status: "Pago",
-        valar: "R$8.375,20",
-      },
-      {
-        platafoma: "Logo",
-        horario: "14:47h",
-        date: "06 de Junho, 2023",
-        status: "Pago",
-        valar: "R$8.375,20",
-      },
-      {
-        platafoma: "Logo",
-        horario: "14:47h",
-        date: "06 de Junho, 2023",
-        status: "Pago",
-        valar: "R$8.375,20",
-      },
-    ];
-    if (limit !== status.limit) setStatus({ ...status, limit });
-    setStatus({
+    const newStatus = {
       data: mockdata,
       count: mockdata.length,
       limit: 10,
       page: 0,
       total: mockdata.length,
-    });
+    };
+    if (limit !== status.limit) setStatus({ ...status, limit });
+    if (status.data !== newStatus.data) {
+      setStatus({ ...newStatus });
+    }
   };
 
   const fields = [
@@ -120,136 +124,9 @@ const Withdrawal = () => {
           total={status.total}
           fields={fields}
           data={status.data}
+          limit={status.limit}
           onData={onData}
         />
-        {/* <TableContainer>
-          <Table>
-            <tr>
-              <th>Platafoma</th>
-              <th>horario</th>
-              <th>Data</th>
-              <th>Status</th>
-              <th>Valor</th>
-            </tr>
-            <tr>
-              <td>
-                <Flex $style={{ vAlign: "center" }}>
-                  <img src={ImageLogo} alt="No logo" />
-                  <P
-                    $style={{
-                      weight: "700",
-                      size: "16px",
-                      m: "0px 0px 0px 10px",
-                    }}
-                  >
-                    Recovery Bet
-                  </P>
-                </Flex>
-              </td>
-              <td>14:47h</td>
-              <td>06 de Junho, 2023</td>
-              <td>Pago</td>
-              <td>R$8.375,20</td>
-            </tr>
-            <tr>
-              <td>
-                <Flex $style={{ vAlign: "center" }}>
-                  <img src={ImageLogo} alt="No logo" />
-                  <P
-                    $style={{
-                      weight: "700",
-                      size: "16px",
-                      m: "0px 0px 0px 10px",
-                    }}
-                  >
-                    Recovery Bet
-                  </P>
-                </Flex>
-              </td>
-              <td>14:47h</td>
-              <td>06 de Junho, 2023</td>
-              <td>Pago</td>
-              <td>R$8.375,20</td>
-            </tr>
-            <tr>
-              <td>
-                <Flex $style={{ vAlign: "center" }}>
-                  <img src={ImageLogo} alt="No logo" />
-                  <P
-                    $style={{
-                      weight: "700",
-                      size: "16px",
-                      m: "0px 0px 0px 10px",
-                    }}
-                  >
-                    Recovery Bet
-                  </P>
-                </Flex>
-              </td>
-              <td>14:47h</td>
-              <td>06 de Junho, 2023</td>
-              <td>Pago</td>
-              <td>R$8.375,20</td>
-            </tr>
-            <tr>
-              <td>
-                <Flex $style={{ vAlign: "center" }}>
-                  <img src={ImageLogo} alt="No logo" />
-                  <P
-                    $style={{
-                      weight: "700",
-                      size: "16px",
-                      m: "0px 0px 0px 10px",
-                    }}
-                  >
-                    Recovery Bet
-                  </P>
-                </Flex>
-              </td>
-              <td>14:47h</td>
-              <td>06 de Junho, 2023</td>
-              <td>Pago</td>
-              <td>R$8.375,20</td>
-            </tr>
-            <tr>
-              <td>
-                <Flex $style={{ vAlign: "center" }}>
-                  <img src={ImageLogo} alt="No logo" />
-                  <P
-                    $style={{
-                      weight: "700",
-                      size: "16px",
-                      m: "0px 0px 0px 10px",
-                    }}
-                  >
-                    Recovery Bet
-                  </P>
-                </Flex>
-              </td>
-              <td>14:47h</td>
-              <td>06 de Junho, 2023</td>
-              <td>Pago</td>
-              <td>R$8.375,20</td>
-            </tr>
-          </Table>
-          <Flex
-            $style={{ m: "20px 0px 0px 0px", gap: "50px", color: "#292929" }}
-          >
-            <Item>
-              <AiOutlineArrowLeft />
-            </Item>
-            <Flex $style={{ gap: "4px" }}>
-              <Item>1</Item>
-              <Item>2</Item>
-              <Item>3</Item>
-              <Item>...</Item>
-              <Item>10</Item>
-            </Flex>
-            <Item>
-              <AiOutlineArrowRight />
-            </Item>
-          </Flex>
-        </TableContainer> */}
       </Container>
     </DashLayout>
   );

@@ -10,10 +10,20 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 150px;
+  }
 `;
 export const Menu = styled.div`
   display: flex;
   gap: 20px;
+  @media screen and (max-width: 768px) {
+    gap: 10px;
+  }
+  @media screen and (max-width: 425px) {
+    gap: 6px;
+  }
 `;
 export const MenuItem = styled.div`
   padding: 8px;
@@ -22,61 +32,34 @@ export const MenuItem = styled.div`
   font-family: "Poppins";
   font-weight: 700;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 150%;
   ${(props) => (props.active ? "border-bottom:2px solid #F6BE76" : "")};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 425px) {
+    font-size: 12px;
+  }
 `;
 export const TableContainer = styled.div`
   margin-top: 25px;
 
   width: 100%;
-  height: 450px;
+  height: fit-content;
 
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 0px;
-    background-color: transparent;
-  }
+  min-height: 100%;
 
   padding: 40px 80px;
 
   background: linear-gradient(218.38deg, #050505 -41.34%, #181818 63.06%);
   border-radius: 5px 5px 5px 7px;
-
-  @media screen and (max-width: 768px) {
-    height: fit-content;
-  }
 `;
-export const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
 
-  tr,
-  th,
-  td {
-    border-bottom: 2px solid rgba(65, 65, 65, 0.35);
-  }
-
-  th {
-    height: 64px;
-  }
-  td {
-    height: 50px;
-    text-align: center;
-    img {
-      width: 30px;
-      height: 30px;
-    }
-  }
-
-  td:first-child,
-  th:first-child {
-    text-align: left;
-  }
-  td:last-child,
-  th:last-child {
-    text-align: right;
-  }
-`;
 export const Item = styled.div`
   display: flex;
   flex-direction: row;

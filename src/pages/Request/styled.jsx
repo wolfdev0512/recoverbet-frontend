@@ -7,7 +7,8 @@ import ImageBack from "assets/images/back.png";
 export const Container = styled.div`
   width: 100%;
   min-height: 100%;
-  height: calc(100vh - 3 00px);
+
+  height: calc(100vh - 300px);
 
   display: flex;
   flex-direction: column;
@@ -39,6 +40,8 @@ export const ActiveLayout = styled.div`
   width: 100%;
   height: 100%;
 
+  min-height: 100%;
+
   background: url(${ImageBack});
   background-repeat: no-repeat;
   background-position: bottom;
@@ -62,6 +65,10 @@ export const ActiveButton = styled.div`
   border-radius: 12px;
 
   margin-top: 25px;
+  @media screen and (max-width: 768px) {
+    max-width: 350px;
+    width: 100%;
+  }
 `;
 export const Submit = styled.button`
   width: 100%;

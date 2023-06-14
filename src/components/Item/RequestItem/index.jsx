@@ -16,8 +16,10 @@ const Dropdown = ({
 
   React.useEffect(() => {
     const windowClick = (e) => {
-      if (!dropdownRef.current.contains(e.target)) {
-        setIsDropdown(false);
+      if (dropdownRef && dropdownRef.current !== null) {
+        if (!dropdownRef.current.contains(e.target)) {
+          setIsDropdown(false);
+        }
       }
     };
 

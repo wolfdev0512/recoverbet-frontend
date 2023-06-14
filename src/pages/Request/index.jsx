@@ -37,6 +37,9 @@ import { useNavigate } from "react-router-dom";
 // hook
 import useModal from "hook/useModal";
 
+// router
+import { useSelector } from "react-redux";
+
 // validation
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -47,7 +50,7 @@ import { DateRangePicker } from "rsuite";
 const data = ["blaze", "playpix", "bet365"];
 const data1 = ["CPF", "Celular", "email"];
 
-const data2 = [
+const Texts = [
   "Consultando informações pelo Banco de dados financeiro….",
   "As informações do banco de dados financeiro são recuperadas...",
   "Encontrar informações em um banco de dados financeiro...",
@@ -56,6 +59,7 @@ const data2 = [
 
 //------------------------------------------------------
 const Panel = () => {
+  const tempValue = useSelector((state) => state.data.value);
   const [date, setDate] = useState([new Date(), new Date()]);
 
   const navigate = useNavigate();
@@ -203,7 +207,16 @@ const Panel = () => {
           <ActiveLayout>
             {active === 2 ? (
               <Flex
-                $style={{ w: "400px", fDirection: "column", vAlign: "center" }}
+                $style={{
+                  w: "400px",
+                  fDirection: "column",
+                  vAlign: "center",
+                  queries: {
+                    768: {
+                      w: "90%",
+                    },
+                  },
+                }}
               >
                 <img
                   src={LogoSuccessImage}
@@ -216,11 +229,26 @@ const Panel = () => {
                     size: "24px",
                     m: "0px 0px 25px 0px",
                     align: "center",
+                    queries: {
+                      1024: {
+                        size: "22px",
+                      },
+                      768: {
+                        size: "20px",
+                      },
+                      425: {
+                        size: "18px",
+                      },
+                    },
                   }}
                 >
                   Sua análise foi concluída com{" "}
                   <Span $style={{ color: "#1DAF51" }}>sucesso!</Span>
-                  <Span $style={{ color: "#F6BE76" }}>
+                  <Span
+                    $style={{
+                      color: "#F6BE76",
+                    }}
+                  >
                     Você tem valores a receber!
                   </Span>
                 </P>
@@ -228,6 +256,7 @@ const Panel = () => {
                   $style={{
                     p: "13px",
                     w: "100%",
+                    maxW: "400px",
                     radius: "12px",
                     back: "#292929",
                   }}
@@ -237,8 +266,21 @@ const Panel = () => {
                     alt="no Money"
                     style={{ width: "40px", height: "40px" }}
                   />
-                  <P $style={{ size: "20px", m: "0px 0px 0px 10px" }}>
-                    <Span $style={{ color: "#F9C178" }}>R$ 5754,28</Span> do
+                  <P
+                    $style={{
+                      size: "20px",
+                      m: "0px 0px 0px 10px",
+                      queries: {
+                        768: {
+                          size: "18px",
+                        },
+                        425: {
+                          size: "14px",
+                        },
+                      },
+                    }}
+                  >
+                    <Span $style={{ color: "#F9C178" }}>R$ {tempValue}</Span> do
                     fundo de garantia estão disponíveis para solicitação de
                     estorno!
                   </P>
@@ -254,7 +296,17 @@ const Panel = () => {
                 </ActiveButton>
               </Flex>
             ) : (
-              <Flex $style={{ fDirection: "column", vAlign: "center" }}>
+              <Flex
+                $style={{
+                  fDirection: "column",
+                  vAlign: "center",
+                  queries: {
+                    1024: {
+                      w: "90%",
+                    },
+                  },
+                }}
+              >
                 <img
                   src={LogoGif}
                   alt="No Logo"
@@ -277,9 +329,21 @@ const Panel = () => {
                     weight: "600",
                     w: "500px",
                     m: "50px 0px 0px 0px",
+                    queries: {
+                      1024: {
+                        w: "90%",
+                        size: "20px",
+                      },
+                      768: {
+                        size: "18px",
+                      },
+                      425: {
+                        size: "16px",
+                      },
+                    },
                   }}
                 >
-                  {data2[Math.floor(value / 30)]}
+                  {Texts[Math.floor(value / 30)]}
                 </P>
               </Flex>
             )}
@@ -329,7 +393,7 @@ const Panel = () => {
                   m: "0px 0px 0px 20px",
                 }}
               >
-                R$ 5754,28
+                R$ {tempValue}
               </P>
             </Flex>
 
@@ -374,6 +438,7 @@ const Panel = () => {
                 hAlign: "space-between",
                 back: "#292929",
                 radius: "5px",
+                vAlign: "center",
               }}
             >
               <P
@@ -508,7 +573,7 @@ const Panel = () => {
                     lH: "150%",
                   }}
                 >
-                  R$10.575,20 reais
+                  R${tempValue} reais
                 </P>
               </Flex>
             </Flex>

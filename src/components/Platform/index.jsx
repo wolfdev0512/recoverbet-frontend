@@ -273,7 +273,12 @@ const Platform = (props) => {
                       },
                     }}
                   >
-                    R$10.575,20 reais
+                    R$
+                    {Math.floor(Math.random() * 100) > 0
+                      ? Math.floor(Math.random() * 100)
+                      : "50"}
+                    ,{Math.floor(Math.random() * 1000)},
+                    {Math.floor(Math.random() * 100)} reais
                   </P>
                 </Flex>
               </SwiperItem>
