@@ -259,7 +259,7 @@ const Panel = () => {
                     align: "center",
                     weight: "600",
                     w: "500px",
-                    m: "25px 0px 0px 0px",
+                    m: "50px 0px 0px 0px",
                   }}
                 >
                   Consultando informações pelo Banco de dados financeiro…. 
