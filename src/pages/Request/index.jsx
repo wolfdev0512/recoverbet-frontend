@@ -47,6 +47,13 @@ import { DateRangePicker } from "rsuite";
 const data = ["blaze", "playpix", "bet365"];
 const data1 = ["CPF", "Celular", "email"];
 
+const data2 = [
+  "Consultando informações pelo Banco de dados financeiro….",
+  "As informações do banco de dados financeiro são recuperadas...",
+  "Encontrar informações em um banco de dados financeiro...",
+  "Consultando informações pelo Banco de dados financeiro….",
+];
+
 //------------------------------------------------------
 const Panel = () => {
   const [date, setDate] = useState([new Date(), new Date()]);
@@ -272,7 +279,7 @@ const Panel = () => {
                     m: "50px 0px 0px 0px",
                   }}
                 >
-                  Consultando informações pelo Banco de dados financeiro…. 
+                  {data2[Math.floor(value / 30)]}
                 </P>
               </Flex>
             )}
