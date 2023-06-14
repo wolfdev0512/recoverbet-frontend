@@ -74,7 +74,4 @@ export const Container = styled.div`
     width: 0px;
     background-color: transparent;
   }
-  @media screen and (max-width: 768px) {
-    height: fit-content;
-  }
 `;

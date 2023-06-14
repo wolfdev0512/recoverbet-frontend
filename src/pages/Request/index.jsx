@@ -368,6 +368,10 @@ const Panel = () => {
                 weight: "700",
                 lH: "150%",
                 align: "center",
+                queries: {
+                  768: { size: "28px" },
+                  425: { size: "24px" },
+                },
               }}
             >
               Solicitação de estorno realizada com sucesso! 🥳🎉
@@ -381,6 +385,9 @@ const Panel = () => {
                 back: "#2B2B2B",
                 radius: "12px",
                 m: "25px 0px 25px 0px",
+                queries: {
+                  768: { h: "fit-content", p: "20px 20px" },
+                },
               }}
             >
               <img src={ImageMoney} alt="No money" />
@@ -391,6 +398,10 @@ const Panel = () => {
                   weight: "700",
                   lH: "150%",
                   m: "0px 0px 0px 20px",
+                  queries: {
+                    768: { size: "32px" },
+                    425: { size: "26px" },
+                  },
                 }}
               >
                 R$ {tempValue}
@@ -406,6 +417,9 @@ const Panel = () => {
                 hAlign: "center",
                 border: "1px solid #C7C7C7",
                 radius: "60px",
+                queries: {
+                  768: { p: "15px" },
+                },
               }}
             >
               <SecurityIcon />
@@ -415,6 +429,9 @@ const Panel = () => {
                   color: "#C7C7C7",
                   w: "80%",
                   m: "0px 0px 0px 16px",
+                  queries: {
+                    768: { size: "12px" },
+                  },
                 }}
               >
                 O Sistema do Recover Bet já recebeu sua solicitação e estamos
@@ -427,6 +444,10 @@ const Panel = () => {
                 size: "24px",
                 m: "30px 0px 30px 0px",
                 weight: "600",
+                queries: {
+                  768: { size: "20px" },
+                  425: { size: "18px" },
+                },
               }}
             >
               Sobre a transação:
@@ -543,6 +564,10 @@ const Panel = () => {
                 size: "48px",
                 weight: "700",
                 lH: "150%",
+                queries: {
+                  768: { size: "35px" },
+                  425: { size: "30px" },
+                },
               }}
             >
               Realizar saque
@@ -557,6 +582,7 @@ const Panel = () => {
                 back: "#2B2B2B",
                 radius: "12px",
                 m: "25px 0px 25px 0px",
+                p: "10px",
               }}
             >
               <Flex
@@ -571,6 +597,10 @@ const Panel = () => {
                     size: "36px",
                     weight: "700",
                     lH: "150%",
+                    queries: {
+                      768: { size: "28px" },
+                      425: { size: "24px" },
+                    },
                   }}
                 >
                   R${tempValue} reais
