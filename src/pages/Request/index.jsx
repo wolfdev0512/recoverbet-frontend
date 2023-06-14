@@ -237,9 +237,11 @@ const Panel = () => {
                       size: "22px",
                     },
                     768: {
+                      w: "300px",
                       size: "20px",
                     },
                     425: {
+                      w: "250px",
                       size: "18px",
                     },
                   },
