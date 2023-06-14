@@ -62,18 +62,18 @@ const Panel = () => {
   const [select2, setSelect2] = useState(1);
   const [select3, setSelect3] = useState(2);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setValue(value + 1);
-  //   }, 100);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setValue(value + 1);
+    }, 100);
 
-  //   if (value === 100) {
-  //     clearInterval(interval);
-  //     setActive(2);
-  //   }
+    if (value === 100) {
+      clearInterval(interval);
+      setActive(2);
+    }
 
-  //   return () => clearInterval(interval);
-  // }, [active, value]);
+    return () => clearInterval(interval);
+  }, [active, value]);
 
   const serveModal = useModal();
 
