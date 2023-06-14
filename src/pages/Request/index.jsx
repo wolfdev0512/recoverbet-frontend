@@ -19,11 +19,13 @@ import {
   ActiveButton,
   Submit,
   DateContainer,
+  InputContainer,
 } from "./styled";
 
 // Image
 import { SecurityIcon } from "assets/icons";
 import LogoImage from "assets/images/logo_1.png";
+import LogoGif from "assets/images/logo.gif";
 import LogoSuccessImage from "assets/images/logo_4.png";
 import ImageMoney from "assets/images/money.png";
 
@@ -42,11 +44,8 @@ import * as Yup from "yup";
 // DatePicker
 import { DateRangePicker } from "rsuite";
 
-const data = [
-  "Selecione a plataforma para realizar a consulta de valores perdidos:",
-  "Selecione a plataforma para realizar a consulta de valores perdidos:",
-  "Selecione a plataforma para realizar a consulta de valores perdidos:",
-];
+const data = ["blaze", "playpix", "bet365"];
+const data1 = ["CPF", "Celular", "email"];
 
 //------------------------------------------------------
 const Panel = () => {
@@ -58,14 +57,16 @@ const Panel = () => {
 
   const [value, setValue] = useState(0);
 
-  const [select1, setSelect1] = useState(0);
-  const [select2, setSelect2] = useState(1);
-  const [select3, setSelect3] = useState(2);
+  const [select1, setSelect1] = useState(-1);
+  const [select2, setSelect2] = useState(-1);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setValue(value + 1);
-    }, 100);
+    let interval;
+    if (active === 1) {
+      interval = setInterval(() => {
+        setValue((prevValue) => prevValue + 1);
+      }, 100);
+    }
 
     if (value === 100) {
       clearInterval(interval);
@@ -121,6 +122,9 @@ const Panel = () => {
             </P>
             <RequestItem
               label={data[select1]}
+              initialLabel={
+                "Selecione a plataforma para realizar a consulta de valores perdidos:"
+              }
               container={(onClose) => (
                 <div>
                   {data.map((item, key) => (
@@ -137,7 +141,13 @@ const Panel = () => {
                 </div>
               )}
             />
-            <RequestItem hideIcon={true} label={data[select2]} />
+            <InputContainer>
+              <input
+                type="text"
+                placeholder="Qual o e-mail de cadastro utilizado na plataforma?"
+              />
+            </InputContainer>
+
             <DateContainer>
               <DateRangePicker
                 showOneCalendar
@@ -239,7 +249,7 @@ const Panel = () => {
             ) : (
               <Flex $style={{ fDirection: "column", vAlign: "center" }}>
                 <img
-                  src={LogoImage}
+                  src={LogoGif}
                   alt="No Logo"
                   style={{ width: "200px", height: "200px" }}
                 />
@@ -250,7 +260,7 @@ const Panel = () => {
                     m: "0px 0px 20px 0px",
                   }}
                 >
-                  Aproximadamente 2 minutos
+                  Aproximadamente {100 - value} seconds...
                 </P>
                 <ProgressBar max={100} value={value} />
                 <P
@@ -496,14 +506,15 @@ const Panel = () => {
               </Flex>
             </Flex>
             <RequestItem
-              label={"Selecione o tipo de chave pix :"}
+              label={data1[select2]}
+              initialLabel={"Selecione o tipo de chave pix :"}
               container={(onClose) => (
                 <div>
-                  {data.map((item, key) => (
+                  {data1.map((item, key) => (
                     <div
                       key={key}
                       onClick={() => {
-                        setSelect1(key);
+                        setSelect2(key);
                         onClose();
                       }}
                     >

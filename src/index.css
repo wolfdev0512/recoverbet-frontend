@@ -34,7 +34,6 @@ a {
   color: #9b9b9b;
   border-radius: 0.8rem;
   cursor: pointer;
-  background: red !important;
 }
 .rs-picker-toggle-textbox {
   background: #050505;
@@ -74,4 +73,13 @@ a {
 
 .rs-picker-toggle-value {
   color: #9b9b9b !important;
+}
+
+.rs-stack-item > input {
+  ::placeholder {
+    color: #9b9b9b !important;
+    font-family: poppins !important;
+    font-size: 14px !important;
+    background: none !important;
+  }
 }

@@ -88,3 +88,29 @@ export const Submit = styled.button`
 export const DateContainer = styled.div`
   width: 100%;
 `;
+
+export const InputContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 15px 20px;
+  border: 1px solid #9b9b9b;
+  color: #9b9b9b;
+  border-radius: 0.8rem;
+
+  input {
+    font-size: 14px;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    ::placeholder {
+      color: #9b9b9b;
+      font-family: poppins;
+      font-size: 14px;
+      background: none !important;
+    }
+  }
+`;
