@@ -38,6 +38,9 @@ import useModal from "hook/useModal";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
+// DatePicker
+import { DateRangePicker } from "rsuite";
+
 const data = [
   "Selecione a plataforma para realizar a consulta de valores perdidos:",
   "Selecione a plataforma para realizar a consulta de valores perdidos:",
@@ -46,6 +49,8 @@ const data = [
 
 //------------------------------------------------------
 const Panel = () => {
+  const [date, setDate] = useState([new Date(), new Date()]);
+
   const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [next, setNext] = useState(0);
@@ -56,18 +61,18 @@ const Panel = () => {
   const [select2, setSelect2] = useState(1);
   const [select3, setSelect3] = useState(2);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setValue(value + 1);
-    }, 100);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setValue(value + 1);
+  //   }, 100);
 
-    if (value === 100) {
-      clearInterval(interval);
-      setActive(2);
-    }
+  //   if (value === 100) {
+  //     clearInterval(interval);
+  //     setActive(2);
+  //   }
 
-    return () => clearInterval(interval);
-  }, [active, value]);
+  //   return () => clearInterval(interval);
+  // }, [active, value]);
 
   const serveModal = useModal();
 
@@ -132,24 +137,7 @@ const Panel = () => {
               )}
             />
             <RequestItem hideIcon={true} label={data[select2]} />
-            <RequestItem
-              label={data[select3]}
-              container={(onClose) => (
-                <div>
-                  {data.map((item, key) => (
-                    <div
-                      key={key}
-                      onClick={() => {
-                        setSelect3(key);
-                        onClose();
-                      }}
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              )}
-            />
+            <DateRangePicker showOneCalendar />
             <Flex $style={{ vAlign: "center" }}>
               <SecurityIcon />
               <P

@@ -69,8 +69,8 @@ export const MenuContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: auto;
 
   @media (max-width: 768px) {
     display: none;

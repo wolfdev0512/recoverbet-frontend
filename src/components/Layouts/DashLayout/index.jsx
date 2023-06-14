@@ -50,7 +50,7 @@ import { setUser } from "redux/features/userSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // image
-import LogoImage from "assets/images/logo_1.png";
+import LogoImage from "assets/images/logo.gif";
 import ImageSupport from "assets/images/support.png";
 import ImageUser from "assets/images/user.png";
 import ImageUpload from "assets/images/upload.png";
