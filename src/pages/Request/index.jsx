@@ -18,6 +18,7 @@ import {
   ActiveLayout,
   ActiveButton,
   Submit,
+  DateContainer,
 } from "./styled";
 
 // Image
@@ -137,7 +138,9 @@ const Panel = () => {
               )}
             />
             <RequestItem hideIcon={true} label={data[select2]} />
-            <DateRangePicker showOneCalendar />
+            <DateContainer>
+              <DateRangePicker showOneCalendar />
+            </DateContainer>
             <Flex $style={{ vAlign: "center" }}>
               <SecurityIcon />
               <P

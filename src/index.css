@@ -20,3 +20,58 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.rs-picker {
+  width: 100%;
+}
+.rs-picker-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 20px !important;
+  border: 1px solid #9b9b9b !important;
+  color: #9b9b9b;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  background: red !important;
+}
+.rs-picker-toggle-textbox {
+  background: #050505;
+}
+.rs-picker-menu {
+  background: #050505;
+}
+.rs-calendar-header-title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #f6be76;
+}
+
+.rs-calendar-table-cell-selected-start > div {
+  background: #1daf51 !important;
+}
+.rs-calendar-table-cell-selected-end > div {
+  background: #f12c4c !important;
+}
+
+.rs-picker-daterange .rs-picker-toggle.rs-btn .rs-picker-toggle-caret {
+  top: calc(50% - 10px);
+}
+
+.rs-picker-default .rs-picker-toggle.rs-btn .rs-picker-toggle-clean {
+  top: calc(50% - 10px);
+}
+
+.rs-picker-default .rs-btn,
+.rs-picker-input .rs-btn,
+.rs-picker-default .rs-picker-toggle,
+.rs-picker-input .rs-picker-toggle {
+  background-color: transparent !important;
+}
+
+.rs-picker-toggle-value {
+  color: #9b9b9b !important;
+}

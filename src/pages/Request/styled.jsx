@@ -84,3 +84,7 @@ export const Submit = styled.button`
     height: 56px;
   }
 `;
+
+export const DateContainer = styled.div`
+  width: 100%;
+`;
