@@ -260,7 +260,7 @@ const Panel = () => {
                     m: "0px 0px 20px 0px",
                   }}
                 >
-                  Aproximadamente {100 - value} seconds...
+                  Aproximadamente {Math.floor((100 - value) / 10)} seconds...
                 </P>
                 <ProgressBar max={100} value={value} />
                 <P
