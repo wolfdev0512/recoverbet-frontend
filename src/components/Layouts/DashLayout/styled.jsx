@@ -164,7 +164,7 @@ export const MainContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 150px 20px;
   }
 `;
 export const Header = styled.div`
@@ -239,14 +239,12 @@ export const Container = styled.div`
     width: 0px;
     background-color: transparent;
   }
-
-  @media screen and (max-width: 768px) {
-    height: fit-content;
-    margin: auto;
-  }
 `;
 
 export const ContentContainer = styled.div`
   width: 100%;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
 `;

@@ -21,15 +21,14 @@ export const Layout = styled.div`
     #181818 63.06%
   );
 
-  border: 1px solid
-    ${(props) =>
-      props.authError
-        ? "#AF1D1D"
-        : props.touched
-        ? props.error
-          ? "#1DAF51"
-          : "#AF1D1D"
-        : "#F6BE76"};
+  ${(props) =>
+    props.authError
+      ? "#AF1D1D"
+      : props.touched
+      ? props.error
+        ? "#1DAF51"
+        : "#AF1D1D"
+      : "#F6BE76"};
   border-radius: 44px;
 
   overflow-x: hidden;

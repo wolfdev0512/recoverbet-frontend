@@ -4,16 +4,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
 
   margin-top: 40px;
 
   display: flex;
   flex-direction: column;
-
-  @media screen and (max-width: 768px) {
-    margin-bottom: 150px;
-  }
 `;
 export const Menu = styled.div`
   display: flex;

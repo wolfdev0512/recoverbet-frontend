@@ -29,6 +29,8 @@ export const Button = styled.button`
   width: 350px;
   height: 60px;
 
+  min-height: 50px;
+
   background: #1daf51;
   border-radius: 12px;
 

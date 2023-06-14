@@ -8,24 +8,22 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  min-height: calc(100vh - 350px);
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   background: linear-gradient(221.13deg, #050505 -58.95%, #181818 40.54%);
   border-radius: 14px;
 
   @media screen and (max-width: 768px) {
-    margin: 0px 0px 150px 0px;
+    height: auto;
   }
 `;
 
 export const Button = styled.div`
   width: 100%;
   height: 60px;
+
+  min-height: 50px;
   background: #1daf51;
 
   display: flex;
@@ -40,12 +38,19 @@ export const ActiveLayout = styled.div`
   width: 100%;
   height: 100%;
 
-  min-height: 100%;
-
   background: url(${ImageBack});
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 100%;
+
+  ::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(221.13deg, #050505 -58.95%, #181818 40.54%);
+  }
 
   display: flex;
   justify-content: center;

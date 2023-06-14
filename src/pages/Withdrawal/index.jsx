@@ -19,46 +19,70 @@ import { Container, Menu, MenuItem } from "./styled";
 import Icon from "components/Icon";
 import Table from "components/Table";
 
-const mockdata = [
-  {
-    platafoma: "Check",
-    horario: "10:22h",
-    date: "06 de Junho, 2023",
-    status: "Pago",
-    valar: "R$8.375,20",
-  },
-  {
-    platafoma: "Exclamation",
-    horario: "22:27h",
-    date: "06 de Junho, 2023",
-    status: "Pendente",
-    valar: "R$8.375,20",
-  },
-  {
-    platafoma: "Setting",
-    horario: "05:47h",
-    date: "05 de Junho, 2023",
-    status: "Pendente",
-    valar: "R$8.375,20",
-  },
-  {
-    platafoma: "Logo",
-    horario: "09:55h",
-    date: "05 de Junho, 2023",
-    status: "Em processamento",
-    valar: "R$8.375,20",
-  },
-  {
-    platafoma: "Logo",
-    horario: "18:08h",
-    date: "04 de Junho, 2023",
-    status: "Em processamento",
-    valar: "R$8.375,20",
-  },
-];
+function generateRandomData() {
+  const plataformas = ["Exclamation", "Setting", "Check", "Logo"];
+  const statuses = ["Pendente", "Em processamento", "Pago"];
+
+  const plataforma =
+    plataformas[Math.floor(Math.random() * plataformas.length)];
+  const date = generateRandomDate();
+  const horario = generateRandomTime();
+  const status = statuses[Math.floor(Math.random() * statuses.length)];
+  const valor = `R$${(Math.random() * 10000).toFixed(2).replace(".", ",")}`;
+
+  return { plataforma, date, horario, status, valor };
+}
+
+function generateRandomDate() {
+  const year = Math.floor(Math.random() * (2030 - 2020 + 1) + 2020);
+  const month = Math.floor(Math.random() * 12 + 1);
+  const day = Math.floor(Math.random() * 28 + 1);
+
+  return `${day < 10 ? "0" : ""}${day} de ${getMonthName(month)}, ${year}`;
+}
+
+function getMonthName(month) {
+  const months = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ];
+
+  return months[month - 1];
+}
+
+function generateRandomTime() {
+  const hour = Math.floor(Math.random() * 24);
+  const minute = Math.floor(Math.random() * 60);
+
+  return `${hour < 10 ? "0" : ""}${hour}:${minute < 10 ? "0" : ""}${minute}h`;
+}
 
 //-------------------------------------------------------
 const Withdrawal = () => {
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    const tempData = [];
+
+    for (let i = 0; i < 5; i++) {
+      const newData = generateRandomData();
+      tempData.push(newData);
+    }
+
+    console.log(tempData);
+    setTableData(tempData);
+  }, []);
+
   const [active, setActive] = useState(0);
   const [status, setStatus] = React.useState({
     data: [],
@@ -70,11 +94,11 @@ const Withdrawal = () => {
 
   const onData = (page, limit) => {
     const newStatus = {
-      data: mockdata,
-      count: mockdata.length,
+      data: tableData,
+      count: tableData.length,
       limit: 10,
       page: 0,
-      total: mockdata.length,
+      total: tableData.length,
     };
     if (limit !== status.limit) setStatus({ ...status, limit });
     if (status.data !== newStatus.data) {
@@ -84,14 +108,14 @@ const Withdrawal = () => {
 
   const fields = [
     {
-      key: "platafoma",
-      label: "Platafoma",
+      key: "plataforma",
+      label: "plataforma",
       render: (v, i) => <Icon icon={v} />,
     },
     { key: "horario", label: "Horario", render: (v, i) => <span>{v}</span> },
     { key: "date", label: "Data", render: (v, i) => <span>{v}</span> },
     { key: "status", label: "Status", render: (v, i) => <span>{v}</span> },
-    { key: "valar", label: "Valor", render: (v, i) => <span>{v}</span> },
+    { key: "valor", label: "Valor", render: (v, i) => <span>{v}</span> },
   ];
 
   return (

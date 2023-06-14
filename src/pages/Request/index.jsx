@@ -91,12 +91,13 @@ const Panel = () => {
 
   return (
     <DashLayout>
-      <Container>
-        {active === 0 ? (
+      {active === 0 ? (
+        <Container>
           <Flex
             $style={{
               gap: "29px",
               w: "100%",
+              h: "100%",
               fDirection: "column",
               p: "50px",
               queries: {
@@ -203,153 +204,153 @@ const Panel = () => {
               </P>
             </Button>
           </Flex>
-        ) : (
-          <ActiveLayout>
-            {active === 2 ? (
-              <Flex
+        </Container>
+      ) : (
+        <ActiveLayout>
+          {active === 2 ? (
+            <Flex
+              $style={{
+                w: "400px",
+                fDirection: "column",
+                vAlign: "center",
+                queries: {
+                  768: {
+                    w: "90%",
+                  },
+                },
+              }}
+            >
+              <img
+                src={LogoSuccessImage}
+                alt="No Logo"
+                style={{ width: "200px", height: "200px" }}
+              />
+              <P
                 $style={{
-                  w: "400px",
-                  fDirection: "column",
-                  vAlign: "center",
+                  color: "#FFFFFF",
+                  size: "24px",
+                  m: "0px 0px 25px 0px",
+                  align: "center",
                   queries: {
+                    1024: {
+                      size: "22px",
+                    },
                     768: {
-                      w: "90%",
+                      size: "20px",
+                    },
+                    425: {
+                      size: "18px",
                     },
                   },
                 }}
               >
+                Sua análise foi concluída com{" "}
+                <Span $style={{ color: "#1DAF51" }}>sucesso!</Span>
+                <Span
+                  $style={{
+                    color: "#F6BE76",
+                  }}
+                >
+                  Você tem valores a receber!
+                </Span>
+              </P>
+              <Flex
+                $style={{
+                  p: "13px",
+                  w: "100%",
+                  maxW: "400px",
+                  radius: "12px",
+                  back: "#292929",
+                }}
+              >
                 <img
-                  src={LogoSuccessImage}
-                  alt="No Logo"
-                  style={{ width: "200px", height: "200px" }}
+                  src={ImageMoney}
+                  alt="no Money"
+                  style={{ width: "40px", height: "40px" }}
                 />
                 <P
                   $style={{
-                    color: "#FFFFFF",
-                    size: "24px",
-                    m: "0px 0px 25px 0px",
-                    align: "center",
+                    size: "20px",
+                    m: "0px 0px 0px 10px",
                     queries: {
-                      1024: {
-                        size: "22px",
-                      },
                       768: {
-                        size: "20px",
+                        size: "18px",
                       },
                       425: {
-                        size: "18px",
+                        size: "14px",
                       },
                     },
                   }}
                 >
-                  Sua análise foi concluída com{" "}
-                  <Span $style={{ color: "#1DAF51" }}>sucesso!</Span>
-                  <Span
-                    $style={{
-                      color: "#F6BE76",
-                    }}
-                  >
-                    Você tem valores a receber!
-                  </Span>
+                  <Span $style={{ color: "#F9C178" }}>R$ {tempValue}</Span> do
+                  fundo de garantia estão disponíveis para solicitação de
+                  estorno!
                 </P>
-                <Flex
-                  $style={{
-                    p: "13px",
-                    w: "100%",
-                    maxW: "400px",
-                    radius: "12px",
-                    back: "#292929",
-                  }}
-                >
-                  <img
-                    src={ImageMoney}
-                    alt="no Money"
-                    style={{ width: "40px", height: "40px" }}
-                  />
-                  <P
-                    $style={{
-                      size: "20px",
-                      m: "0px 0px 0px 10px",
-                      queries: {
-                        768: {
-                          size: "18px",
-                        },
-                        425: {
-                          size: "14px",
-                        },
-                      },
-                    }}
-                  >
-                    <Span $style={{ color: "#F9C178" }}>R$ {tempValue}</Span> do
-                    fundo de garantia estão disponíveis para solicitação de
-                    estorno!
-                  </P>
-                </Flex>
-                <ActiveButton
-                  onClick={() => {
-                    serveModal.openModal();
-                  }}
-                >
-                  <P style={{ weight: "600", size: "18px" }}>
-                    Solicitar reembolso
-                  </P>
-                </ActiveButton>
               </Flex>
-            ) : (
-              <Flex
+              <ActiveButton
+                onClick={() => {
+                  serveModal.openModal();
+                }}
+              >
+                <P style={{ weight: "600", size: "18px" }}>
+                  Solicitar reembolso
+                </P>
+              </ActiveButton>
+            </Flex>
+          ) : (
+            <Flex
+              $style={{
+                fDirection: "column",
+                vAlign: "center",
+                queries: {
+                  1024: {
+                    w: "90%",
+                  },
+                },
+              }}
+            >
+              <img
+                src={LogoGif}
+                alt="No Logo"
+                style={{ width: "200px", height: "200px" }}
+              />
+              <P
                 $style={{
-                  fDirection: "column",
-                  vAlign: "center",
+                  color: "#C7C7C7",
+                  size: "14px",
+                  m: "0px 0px 20px 0px",
+                }}
+              >
+                Aproximadamente {Math.floor((100 - value) / 10)} seconds...
+              </P>
+              <ProgressBar max={100} value={value} />
+              <P
+                $style={{
+                  size: "24px",
+                  align: "center",
+                  weight: "600",
+                  w: "500px",
+                  m: "50px 0px 0px 0px",
                   queries: {
                     1024: {
                       w: "90%",
+                      size: "20px",
+                    },
+                    768: {
+                      size: "18px",
+                    },
+                    425: {
+                      size: "16px",
                     },
                   },
                 }}
               >
-                <img
-                  src={LogoGif}
-                  alt="No Logo"
-                  style={{ width: "200px", height: "200px" }}
-                />
-                <P
-                  $style={{
-                    color: "#C7C7C7",
-                    size: "14px",
-                    m: "0px 0px 20px 0px",
-                  }}
-                >
-                  Aproximadamente {Math.floor((100 - value) / 10)} seconds...
-                </P>
-                <ProgressBar max={100} value={value} />
-                <P
-                  $style={{
-                    size: "24px",
-                    align: "center",
-                    weight: "600",
-                    w: "500px",
-                    m: "50px 0px 0px 0px",
-                    queries: {
-                      1024: {
-                        w: "90%",
-                        size: "20px",
-                      },
-                      768: {
-                        size: "18px",
-                      },
-                      425: {
-                        size: "16px",
-                      },
-                    },
-                  }}
-                >
-                  {Texts[Math.floor(value / 30)]}
-                </P>
-              </Flex>
-            )}
-          </ActiveLayout>
-        )}
-      </Container>
+                {Texts[Math.floor(value / 30)]}
+              </P>
+            </Flex>
+          )}
+        </ActiveLayout>
+      )}
       <ModalLayout show={serveModal.isOpen} closeModal={serveModal.closeModal}>
         {next === 1 ? (
           <Flex
