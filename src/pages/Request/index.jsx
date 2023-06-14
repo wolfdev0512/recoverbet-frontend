@@ -233,6 +233,7 @@ const Panel = () => {
                   align: "center",
                   queries: {
                     1024: {
+                      w: "400px",
                       size: "22px",
                     },
                     768: {
@@ -244,15 +245,15 @@ const Panel = () => {
                   },
                 }}
               >
-                Sua análise foi concluída com{" "}
-                <Span $style={{ color: "#1DAF51" }}>sucesso!</Span>
-                <Span
-                  $style={{
+                Sua análise foi concluída com
+                <span style={{ color: "#1DAF51" }}>&nbsp;sucesso!</span>
+                <span
+                  style={{
                     color: "#F6BE76",
                   }}
                 >
-                  Você tem valores a receber!
-                </Span>
+                  &nbsp;Você tem valores a receber!
+                </span>
               </P>
               <Flex
                 $style={{
