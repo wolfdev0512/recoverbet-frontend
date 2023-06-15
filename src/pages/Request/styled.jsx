@@ -45,7 +45,7 @@ export const ActiveLayout = styled.div`
   background: url(${ImageBack});
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: 100%;
+  background-size: 100% 50%;
 
   padding: 30px 20px;
 
