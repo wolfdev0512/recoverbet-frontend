@@ -20,7 +20,7 @@ import Icon from "components/Icon";
 import Table from "components/Table";
 
 function generateRandomData() {
-  const plataformas = ["Exclamation", "Setting", "Check", "Logo"];
+  const plataformas = ["Exclamation", "Setting", "Check"];
   const statuses = ["Pendente", "Em processamento", "Pago"];
 
   const plataforma =
