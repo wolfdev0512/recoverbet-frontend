@@ -225,7 +225,13 @@ const Panel = () => {
                           089.98.253-83
                         </P>
                       </Flex>
-                      <SettingIcon />
+                      <div
+                        onClick={() => {
+                          navigate("/dash/data");
+                        }}
+                      >
+                        <SettingIcon />
+                      </div>
                     </Flex>
                     <Flex $style={{ fDirection: "column" }}>
                       <P
@@ -287,15 +293,22 @@ const Panel = () => {
                         </P>
                       </Flex>
                       <Flex $style={{ fDirection: "column", vAlign: "center" }}>
-                        <RotatoIcon />
-                        <P
-                          $style={{
-                            m: "5px 0px 0px 0px",
-                            color: "rgba(199, 199, 199, 0.5)",
+                        <div
+                          style={{ width: "100%", height: "100%" }}
+                          onClick={() => {
+                            navigate("/dash/withdrawal");
                           }}
                         >
-                          Histórico
-                        </P>
+                          <RotatoIcon />
+                          <P
+                            $style={{
+                              m: "5px 0px 0px 0px",
+                              color: "rgba(199, 199, 199, 0.5)",
+                            }}
+                          >
+                            Histórico
+                          </P>
+                        </div>
                       </Flex>
                     </Flex>
                   </Flex>

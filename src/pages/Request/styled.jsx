@@ -69,6 +69,10 @@ export const ActiveButton = styled.div`
 
   border-radius: 12px;
 
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Poppins;
+
   margin-top: 25px;
   @media screen and (max-width: 768px) {
     max-width: 350px;

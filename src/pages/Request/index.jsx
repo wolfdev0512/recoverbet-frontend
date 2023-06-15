@@ -52,9 +52,9 @@ const data1 = ["CPF", "Celular", "email"];
 
 const Texts = [
   "Consultando informações pelo Banco de dados financeiro….",
-  "As informações do banco de dados financeiro são recuperadas...",
-  "Encontrar informações em um banco de dados financeiro...",
-  "Consultando informações pelo Banco de dados financeiro….",
+  "Processando seu histórico na plataforma…",
+  " Por favor, aguarde enquanto nosso sistema verifica valores a receber…",
+  "O Recover Bet está consultando suas perdas…",
 ];
 
 //------------------------------------------------------
@@ -295,9 +295,7 @@ const Panel = () => {
                   serveModal.openModal();
                 }}
               >
-                <P style={{ weight: "600", size: "18px" }}>
-                  Solicitar reembolso
-                </P>
+                Solicitar reembolso
               </ActiveButton>
             </Flex>
           ) : (
@@ -348,7 +346,7 @@ const Panel = () => {
                   },
                 }}
               >
-                {Texts[Math.floor(value / 30)]}
+                {Texts[Math.floor(value / 25)]}
               </P>
             </Flex>
           )}
@@ -638,7 +636,7 @@ const Panel = () => {
             />
             <Formik
               initialValues={{
-                code: "089.98.253-83",
+                code: "",
               }}
               validationSchema={Yup.object({
                 code: Yup.string().required("Campo obrigatório."),
