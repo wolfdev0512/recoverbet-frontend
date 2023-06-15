@@ -223,6 +223,9 @@ const DashLayout = (props) => {
                     1440: {
                       size: "28px",
                     },
+                    768: {
+                      size: "24px",
+                    },
                   },
                 }}
               >
