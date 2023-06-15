@@ -296,13 +296,13 @@ const Panel = () => {
               >
                 Sua análise foi concluída com
                 <span style={{ color: "#1DAF51" }}>&nbsp;sucesso!</span>
-                <span
-                  style={{
+                <P
+                  $style={{
                     color: "#F6BE76",
                   }}
                 >
                   &nbsp;Você tem valores a receber!
-                </span>
+                </P>
               </P>
               <Flex
                 $style={{
