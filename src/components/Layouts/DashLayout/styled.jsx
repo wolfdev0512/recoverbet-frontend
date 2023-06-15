@@ -164,7 +164,7 @@ export const MainContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    padding: 20px 20px 150px 20px;
+    padding: 20px 20px 120px 20px;
   }
 `;
 export const Header = styled.div`
@@ -220,6 +220,8 @@ export const Button = styled.button`
 `;
 
 export const Container = styled.div`
+  overflow-x: hidden;
+  overflow-y: auto;
   width: 100%;
   height: calc(100% - 130px);
 
@@ -231,9 +233,6 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  overflow-x: hidden;
-  overflow-y: scroll;
 
   &::-webkit-scrollbar {
     width: 0px;

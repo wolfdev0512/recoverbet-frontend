@@ -5,6 +5,7 @@ import ImageBack from "assets/images/back.png";
 //------------------------------------------------
 
 export const Container = styled.div`
+  flex: 1;
   width: 100%;
   height: 100%;
 
@@ -34,14 +35,19 @@ export const Button = styled.div`
 `;
 
 export const ActiveLayout = styled.div`
+  flex: 1;
   position: relative;
   width: 100%;
-  height: 100%;
+  /* max-height: 100%; */
+
+  height: fit-content;
 
   background: url(${ImageBack});
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 100%;
+
+  padding: 30px 20px;
 
   ::before {
     content: "";

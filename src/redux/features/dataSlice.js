@@ -2,12 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   data: false,
-  value:
-    Math.floor(Math.random() * 10) +
-    "," +
-    Math.floor(Math.random() * 1000) +
-    "." +
-    Math.floor(Math.random() * 100),
+  value: 1 + "," + Math.floor(Math.random() * 1000),
 };
 
 export const dataSlice = createSlice({
@@ -18,12 +13,7 @@ export const dataSlice = createSlice({
       state.data = action.payload.data;
     },
     setValue: (state, action) => {
-      state.value =
-        Math.floor(Math.random() * 10) +
-        "," +
-        Math.floor(Math.random() * 1000) +
-        "." +
-        Math.floor(Math.random() * 100);
+      state.value = 1 + "," + Math.floor(Math.random() * 1000);
     },
   },
 });
