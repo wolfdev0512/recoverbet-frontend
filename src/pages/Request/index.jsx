@@ -95,7 +95,7 @@ const data = [
   "Vai de Bet",
   "Global Bet",
 ];
-const data1 = ["CPF", "Celular", "email"];
+const data1 = ["CPF/CNPJ", "Telefone", "E-Mail", "Chave aleatoria"];
 
 const Texts = [
   "Consultando informações pelo Banco de dados financeiro….",
