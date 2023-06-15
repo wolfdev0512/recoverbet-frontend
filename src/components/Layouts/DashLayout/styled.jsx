@@ -181,7 +181,7 @@ export const Header = styled.div`
     width: 100%;
   }
   @media screen and (max-width: 425px) {
-    padding: 20px 25px;
+    padding: 20px 0px;
   }
 `;
 export const User = styled.div`
