@@ -47,6 +47,10 @@
 
 .dropdown .dropdown-box {
   position: absolute;
+  height: 200px;
+
+  overflow: auto;
+
   top: calc(100% + 0.3rem);
   width: 100%;
   background: #0c0c0c;
@@ -56,6 +60,11 @@
   box-shadow: 0 0 0.5rem 0 #181818;
   cursor: pointer;
   z-index: 10;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent;
 }
 
 .dropdown .dropdown-box > div {
